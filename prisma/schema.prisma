@@ -151,3 +151,79 @@ model Review {
 
   @@index([productId])
 }
+
+// Additional models for orders
+
+model Order {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Order status
+  status String @default("PENDING") // PENDING, PAID, SHIPPED, DELIVERED, CANCELLED
+
+  // Customer details
+  customerEmail String
+  customerName  String
+
+  // Payment details
+  paymentIntentId String? @unique
+  paymentStatus   String  @default("PENDING") // PENDING, COMPLETED, FAILED
+
+  // Shipping address
+  shippingAddress Address? @relation(fields: [addressId], references: [id])
+  addressId       String?
+
+  // Order items
+  items OrderItem[]
+
+  // Totals (stored in cents)
+  subtotal Int
+  total    Int
+
+  // Notes
+  notes String?
+
+  @@index([customerEmail])
+  @@index([paymentStatus])
+  @@index([status])
+}
+
+model Address {
+  id         String  @id @default(uuid())
+  firstName  String
+  lastName   String
+  company    String?
+  address1   String
+  address2   String?
+  city       String
+  state      String?
+  postalCode String
+  country    String
+  phone      String?
+
+  // Related orders
+  orders Order[]
+}
+
+model OrderItem {
+  id String @id @default(uuid())
+
+  // Order reference
+  order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  orderId String
+
+  // Product reference and snapshot
+  productId    String
+  productTitle String
+  productImage String?
+
+  // Price at time of purchase (stored in cents)
+  price Int
+
+  // Quantity
+  quantity Int
+
+  @@index([orderId])
+  @@index([productId])
+}

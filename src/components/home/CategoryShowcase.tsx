@@ -69,7 +69,7 @@ export default async function CategoryShowcase() {
                     </li>
                   ))}
                 </ul>
-                <Link href={`/categorie/${category.name}`}>
+                <Link href={`/categorie/${category.name}`} passHref>
                   <Button className="bg-blue-900 px-6 py-3 text-white hover:bg-blue-800">
                     Bekijk de collectie
                   </Button>

@@ -12,7 +12,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <Image
-              src="/logo-white.svg" // Replace with your white logo version
+              src="/relax-logo.webp"
               alt="Relax-Time"
               width={150}
               height={40}
@@ -25,18 +25,21 @@ export default function Footer() {
               <Link
                 href="https://facebook.com"
                 className="text-white hover:text-blue-200"
+                passHref
               >
                 <Facebook />
               </Link>
               <Link
                 href="https://instagram.com"
                 className="text-white hover:text-blue-200"
+                passHref
               >
                 <Instagram />
               </Link>
               <Link
                 href="https://twitter.com"
                 className="text-white hover:text-blue-200"
+                passHref
               >
                 <Twitter />
               </Link>

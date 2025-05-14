@@ -20,14 +20,14 @@ const AdminHeader = () => {
       <div className="flex-1">
         <div className="flex h-full items-center justify-between">
           <div className="flex items-center">
-            <Link href="/">
-              {/* <Image
+            <Link href="/" passHref>
+              <Image
                 className="h-20 object-contain"
-                src={Logo}
+                src={"/naderzwart.png"}
                 alt="Nadergas logo"
                 height={100}
                 width={250}
-              /> */}
+              />
             </Link>
           </div>
           <div className="hidden md:flex md:items-center md:gap-5">
@@ -36,7 +36,7 @@ const AdminHeader = () => {
                 <ShieldCheck /> {session.user.email}
               </Button>
             ) : (
-              <Link href="/api/auth/signin">
+              <Link href="/api/auth/signin" passHref>
                 <Button variant="secondary">Aanmelden</Button>
               </Link>
             )}
@@ -54,7 +54,7 @@ const AdminHeader = () => {
                       <ShieldCheck /> {session.user.email}
                     </Button>
                   ) : (
-                    <Link href="/api/auth/signin">
+                    <Link href="/api/auth/signin" passHref>
                       <Button variant="secondary">Aanmelden</Button>
                     </Link>
                   )}

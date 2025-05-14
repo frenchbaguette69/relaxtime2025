@@ -5,6 +5,9 @@ import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import { CartProvider } from "@/context/CartContext";
+import CartSidebar from "@/components/shared/CartSidebar";
+import { Toaster } from "sonner";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -29,9 +32,13 @@ export default function RootLayout({
           fontSans.variable,
         )}
       >
-        <Header />
-        {children}
-        <Footer />
+        <CartProvider>
+          <Header />
+          {children}
+          <CartSidebar />
+          <Footer />
+          <Toaster position="top-center" richColors />
+        </CartProvider>
       </body>
     </>
   );

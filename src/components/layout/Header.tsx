@@ -16,10 +16,12 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import type { Category } from "@prisma/client";
+import { useCart } from "@/context/CartContext";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [categories, setCategories] = useState<Category[]>([]);
+  const { itemCount, openCart } = useCart();
 
   useEffect(() => {
     // Fetch categories from the API
@@ -37,7 +39,7 @@ export default function Header() {
         {/* Logo */}
         <Link href="/" className="flex items-center">
           <Image
-            src="/logo.svg" // Replace with your actual logo
+            src="/relax-logo.webp"
             alt="Relax-Time"
             width={150}
             height={40}
@@ -59,6 +61,7 @@ export default function Header() {
                       <li key={category.id}>
                         <NavigationMenuLink asChild>
                           <Link
+                            passHref
                             href={`/categorie/${category.name}`}
                             className="block space-y-1 rounded-md p-3 leading-none no-underline transition-colors outline-none select-none hover:bg-blue-100 hover:text-blue-900 focus:bg-blue-100 focus:text-blue-900"
                           >
@@ -76,21 +79,21 @@ export default function Header() {
                 </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link href="/aanbiedingen" legacyBehavior passHref>
+                <Link href="/aanbiedingen" passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     Aanbiedingen
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link href="/over-ons" legacyBehavior passHref>
+                <Link href="/over-ons" passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     Over Ons
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link href="/contact" legacyBehavior passHref>
+                <Link href="/contact" passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     Contact
                   </NavigationMenuLink>
@@ -120,11 +123,14 @@ export default function Header() {
             variant="ghost"
             size="icon"
             className="relative text-blue-900 hover:text-blue-700"
+            onClick={openCart}
           >
             <ShoppingCart className="h-5 w-5" />
-            <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-blue-900 text-xs text-white">
-              0
-            </span>
+            {itemCount > 0 && (
+              <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-blue-900 text-xs text-white">
+                {itemCount}
+              </span>
+            )}
           </Button>
           <Button
             variant="ghost"
@@ -140,7 +146,6 @@ export default function Header() {
           </Button>
         </div>
       </div>
-
       {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="absolute w-full border-b border-gray-200 bg-white shadow-lg lg:hidden">
