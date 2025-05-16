@@ -47,3 +47,5 @@ yarn-error.log*
 
 # upload files
 /public/uploads
+
+.env.prod
