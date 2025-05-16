@@ -127,7 +127,7 @@ export default function ImageUpload({
               fill
               className="object-cover"
               alt="Product image"
-              src={url}
+              src={`${process.env.NEXT_PUBLIC_SITE_URL}/${url}`}
             />
           </div>
         ))}

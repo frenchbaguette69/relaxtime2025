@@ -36,7 +36,7 @@ export default function ProductImageGallery({
       {/* Main image */}
       <div className="relative mb-4 h-[400px] overflow-hidden rounded-lg bg-gray-100">
         <Image
-          src={imageList[activeIndex]!}
+          src={`${process.env.NEXT_PUBLIC_SITE_URL}/${imageList[activeIndex]}`}
           alt={`${title} - afbeelding ${activeIndex + 1}`}
           fill
           style={{ objectFit: "contain" }}
@@ -84,7 +84,7 @@ export default function ProductImageGallery({
               onClick={() => setActiveIndex(idx)}
             >
               <Image
-                src={image}
+                src={`${process.env.NEXT_PUBLIC_SITE_URL}/${image}`}
                 alt={`${title} - thumbnail ${idx + 1}`}
                 fill
                 style={{ objectFit: "cover" }}
@@ -105,7 +105,7 @@ export default function ProductImageGallery({
           <div className="relative h-[80vh] w-full">
             {zoomIndex !== null && (
               <ImageZoom
-                src={imageList[zoomIndex]!}
+                src={`${process.env.NEXT_PUBLIC_SITE_URL}/${imageList[zoomIndex]!}`}
                 alt={`${title} - afbeelding ${zoomIndex + 1}`}
                 onClose={() => setZoomIndex(null)}
               />

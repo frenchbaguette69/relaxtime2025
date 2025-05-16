@@ -35,21 +35,23 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white">
-      <div className="container mx-auto flex items-center justify-between px-4 py-4">
-        {/* Logo */}
-        <Link href="/" className="flex items-center">
-          <Image
-            src="/relax-logo.webp"
-            alt="Relax-Time"
-            width={150}
-            height={40}
-            className="h-8 w-auto"
-          />
-        </Link>
+      <div className="container mx-auto grid grid-cols-3 items-center px-4 py-4">
+        {/* Logo (Left) */}
+        <div className="flex items-center">
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/relax-logo.png"
+              alt="Relax-Time"
+              width={150}
+              height={40}
+              className="h-8 w-auto"
+            />
+          </Link>
+        </div>
 
-        {/* Desktop Navigation */}
-        <div className="hidden items-center space-x-8 lg:flex">
-          <NavigationMenu>
+        {/* Desktop Navigation (Center) */}
+        <div className="flex items-center justify-center">
+          <NavigationMenu className="hidden lg:block">
             <NavigationMenuList>
               <NavigationMenuItem>
                 <NavigationMenuTrigger className="text-blue-900 hover:text-blue-700">
@@ -62,7 +64,7 @@ export default function Header() {
                         <NavigationMenuLink asChild>
                           <Link
                             passHref
-                            href={`/categorie/${category.name}`}
+                            href={`/producten?category=${category.id}`}
                             className="block space-y-1 rounded-md p-3 leading-none no-underline transition-colors outline-none select-none hover:bg-blue-100 hover:text-blue-900 focus:bg-blue-100 focus:text-blue-900"
                           >
                             <div className="text-sm leading-none font-medium">
@@ -79,9 +81,9 @@ export default function Header() {
                 </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link href="/aanbiedingen" passHref>
+                <Link href="/producten" passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    Aanbiedingen
+                    Producten
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
@@ -103,8 +105,8 @@ export default function Header() {
           </NavigationMenu>
         </div>
 
-        {/* Actions */}
-        <div className="flex items-center space-x-4">
+        {/* Actions (Right) */}
+        <div className="flex items-center justify-end space-x-4">
           <Button
             variant="ghost"
             size="icon"
@@ -146,6 +148,7 @@ export default function Header() {
           </Button>
         </div>
       </div>
+
       {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="absolute w-full border-b border-gray-200 bg-white shadow-lg lg:hidden">

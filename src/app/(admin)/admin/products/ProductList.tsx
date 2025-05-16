@@ -158,7 +158,7 @@ export default function ProductList({
                       >
                         {product.images[0] ? (
                           <Image
-                            src={product.images[0]}
+                            src={`${process.env.NEXT_PUBLIC_SITE_URL}/${product.images[0]}`}
                             alt={product.title}
                             fill
                             className="rounded-md object-cover"
@@ -173,7 +173,7 @@ export default function ProductList({
                         {product.images.map((image: string) => (
                           <div key={image} className="relative aspect-square">
                             <Image
-                              src={image}
+                              src={`${process.env.NEXT_PUBLIC_SITE_URL}/${image}`}
                               alt={product.title}
                               fill
                               className="rounded-md object-cover"

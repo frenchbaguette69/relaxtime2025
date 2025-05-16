@@ -111,7 +111,7 @@ export default function CategoryList({
               <div className="relative h-48 w-full bg-blue-50">
                 {category.cover ? (
                   <Image
-                    src={category.cover}
+                    src={`${process.env.NEXT_PUBLIC_SITE_URL}/${category.cover}`}
                     alt={category.name}
                     fill
                     className="object-cover"

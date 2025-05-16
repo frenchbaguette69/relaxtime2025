@@ -62,7 +62,7 @@ export default function ProductDetails({ product }: { product: FullProduct }) {
             <ChevronRight size={14} />
           </li>
           <li className="flex items-center">
-            <Link href="/products" className="hover:text-blue-900">
+            <Link href="/producten" className="hover:text-blue-900">
               Producten
             </Link>
           </li>
@@ -73,7 +73,7 @@ export default function ProductDetails({ product }: { product: FullProduct }) {
               </li>
               <li className="flex items-center">
                 <Link
-                  href={`/products?category=${product.categories[0].category.id}`}
+                  href={`/producten?category=${product.categories[0].category.id}`}
                   className="hover:text-blue-900"
                   passHref
                 >
@@ -236,7 +236,7 @@ export default function ProductDetails({ product }: { product: FullProduct }) {
               {product.categories.map((cat, index) => (
                 <span key={cat.category.id}>
                   <Link
-                    href={`/products?category=${cat.category.id}`}
+                    href={`/producten?category=${cat.category.id}`}
                     className="hover:text-blue-900"
                   >
                     {cat.category.name}

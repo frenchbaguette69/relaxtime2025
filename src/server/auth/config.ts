@@ -75,6 +75,7 @@ export const authConfig = {
      */
   ],
   adapter: PrismaAdapter(db),
+  trustHost: true,
   callbacks: {
     async jwt({ token, user }: { token: any; user: any }) {
       if (user) token.user = user;

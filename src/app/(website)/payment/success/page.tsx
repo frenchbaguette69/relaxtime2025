@@ -1,7 +1,7 @@
 // app/bestelling/succes/page.tsx
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { CheckCircle, ShoppingBag, Loader2 } from "lucide-react";
@@ -17,7 +17,7 @@ interface OrderDetails {
   createdAt: string;
 }
 
-export default function OrderSuccessPage() {
+const OrderSuccessPage = () => {
   const [order, setOrder] = useState<OrderDetails | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const searchParams = useSearchParams();
@@ -129,5 +129,15 @@ export default function OrderSuccessPage() {
         </div>
       </div>
     </div>
+  );
+};
+
+export default function OrderSuccessPageWrapper() {
+  return (
+    <Suspense
+      fallback={<Loader2 className="h-12 w-12 animate-spin text-blue-900" />}
+    >
+      <OrderSuccessPage />
+    </Suspense>
   );
 }

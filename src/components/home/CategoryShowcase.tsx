@@ -34,7 +34,7 @@ export default async function CategoryShowcase() {
               <div className={`${index % 2 === 1 ? "md:order-2" : ""}`}>
                 <div className="relative h-[300px] overflow-hidden rounded-lg md:h-[400px]">
                   <Image
-                    src={category.cover || "/placeholder.jpg"}
+                    src={`${process.env.NEXT_PUBLIC_SITE_URL}/${category.cover}`}
                     alt={category.name}
                     fill
                     style={{ objectFit: "cover" }}

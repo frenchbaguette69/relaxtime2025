@@ -26,7 +26,7 @@ export default function RootLayout({
 }) {
   return (
     <>
-      <body
+      <div
         className={cn(
           "min-h-screen bg-white font-sans antialiased",
           fontSans.variable,
@@ -39,7 +39,7 @@ export default function RootLayout({
           <Footer />
           <Toaster position="top-center" richColors />
         </CartProvider>
-      </body>
+      </div>
     </>
   );
 }

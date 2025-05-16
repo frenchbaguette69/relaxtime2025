@@ -12,7 +12,7 @@ export default function ProductNotFound() {
         Het product dat u zoekt bestaat niet of is niet meer beschikbaar.
       </p>
       <Button asChild className="bg-blue-900 hover:bg-blue-800">
-        <Link href="/products">Bekijk alle producten</Link>
+        <Link href="/producten">Bekijk alle producten</Link>
       </Button>
     </div>
   );

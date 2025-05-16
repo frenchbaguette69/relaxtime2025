@@ -1,13 +1,19 @@
 // components/home/FeaturedProducts.tsx
 import ProductCard from "@/components/shared/ProductCard";
 import { PrismaClient } from "@prisma/client";
+import { unstable_noStore } from "next/cache";
 
 const prisma = new PrismaClient();
 
 export default async function FeaturedProducts() {
+  unstable_noStore();
   const featuredProducts = await prisma.product.findMany({
     include: {
       categories: true,
+    },
+    take: 3,
+    orderBy: {
+      createdAt: "desc",
     },
   });
 

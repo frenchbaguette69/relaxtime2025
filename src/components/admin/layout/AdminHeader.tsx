@@ -22,9 +22,9 @@ const AdminHeader = () => {
           <div className="flex items-center">
             <Link href="/" passHref>
               <Image
-                className="h-20 object-contain"
-                src={"/naderzwart.png"}
-                alt="Nadergas logo"
+                className="h-10 w-12 object-contain"
+                src={"/relax-logo.png"}
+                alt="Relax Logo"
                 height={100}
                 width={250}
               />

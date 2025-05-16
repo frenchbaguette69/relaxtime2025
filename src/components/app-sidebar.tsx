@@ -26,8 +26,8 @@ import Link from "next/link";
 // Menu items.
 const items = [
   {
-    title: "Quotes",
-    url: "/admin/quotes",
+    title: "Orders",
+    url: "/admin/orders",
     icon: Quote,
   },
   {

@@ -1,7 +1,7 @@
 // app/checkout/page.tsx
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
@@ -13,7 +13,7 @@ import { Loader2 } from "lucide-react";
 // Load Stripe outside of component render cycle
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY!);
 
-export default function PaymentPage() {
+const PaymentPage = () => {
   const [clientSecret, setClientSecret] = useState<string | null>(null);
   const [orderId, setOrderId] = useState<string | null>(null);
   const searchParams = useSearchParams();
@@ -75,5 +75,15 @@ export default function PaymentPage() {
         </Elements>
       </div>
     </div>
+  );
+};
+
+export default function PaymentPageWrapper() {
+  return (
+    <Suspense
+      fallback={<Loader2 className="h-12 w-12 animate-spin text-blue-900" />}
+    >
+      <PaymentPage />
+    </Suspense>
   );
 }

@@ -59,7 +59,7 @@ export default function CartSidebar() {
                     <div className="flex items-start space-x-4">
                       <div className="relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-md">
                         <Image
-                          src={item.product.images[0] || "/placeholder.jpg"}
+                          src={`${process.env.NEXT_PUBLIC_SITE_URL}/${item.product.images[0]}`}
                           alt={item.product.title}
                           fill
                           style={{ objectFit: "cover" }}

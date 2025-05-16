@@ -9,6 +9,12 @@ const config = {
   images: {
     remotePatterns: [
       {
+        protocol: "http",
+        hostname: "localhost",
+        port: "3000",
+        pathname: "/**",
+      },
+      {
         protocol: "https",
         hostname: "images.unsplash.com",
         port: "",
@@ -22,7 +28,6 @@ const config = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  output: "standalone",
   transpilePackages: ["@acme/ui"],
 };
 

@@ -12,11 +12,13 @@ export default function ProductCard({ product }: { product: Product }) {
   const { slug, title, summary, price, offerPrice, images } = product;
   const { addItem } = useCart();
 
+  console.log();
+
   return (
     <div className="overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md transition-shadow duration-300 hover:shadow-lg">
       <div className="relative h-64 w-full">
         <Image
-          src={images[0] || "/placeholder.jpg"}
+          src={`${process.env.NEXT_PUBLIC_SITE_URL}/${images[0]}`}
           alt={title}
           fill
           style={{ objectFit: "cover" }}
@@ -58,7 +60,7 @@ export default function ProductCard({ product }: { product: Product }) {
           >
             In Winkelwagen
           </Button>
-          <Link href={`/products/${slug}`}>
+          <Link href={`/producten/${slug}`}>
             <Button
               variant="outline"
               className="border-blue-900 text-blue-900 hover:bg-blue-50"

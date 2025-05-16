@@ -12,7 +12,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <Image
-              src="/relax-logo.webp"
+              src="/relax-logo.png"
               alt="Relax-Time"
               width={150}
               height={40}
