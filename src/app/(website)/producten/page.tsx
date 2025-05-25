@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function ProductsRoute() {
   return (
     <main className="container mx-auto min-h-screen px-4 py-8">
-      <h1 className="mb-6 text-3xl font-bold text-blue-900">Onze Producten</h1>
+      <h1 className="mb-6 text-3xl font-bold text-[#0a1e3b]">Onze Producten</h1>
       <Suspense fallback={<ProductsPageSkeleton />}>
         <ProductsPage />
       </Suspense>

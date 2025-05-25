@@ -8,40 +8,52 @@ async function main() {
   const password = process.env.ADMIN_PASSWORD;
 
   if (!email || !password) {
-    throw new Error(
-      "ADMIN_EMAIL and ADMIN_PASSWORD environment variables are required",
-    );
+    throw new Error("ADMIN_EMAIL and ADMIN_PASSWORD environment variables are required");
   }
 
-  // Check if an admin user already exists
-  const existingAdmin = await prisma.user.findUnique({
-    where: { email },
-  });
+  // 🔐 Admin user aanmaken (indien nog niet bestaat)
+  let admin = await prisma.user.findUnique({ where: { email } });
 
-  if (!existingAdmin) {
-    // Hash the password
+  if (!admin) {
     const hashedPassword = await bcrypt.hash(password, 10);
-
-    // Create the admin user
-    await prisma.user.create({
+    admin = await prisma.user.create({
       data: {
         email,
         name: "Admin",
         hashedPassword,
-        role: "ADMIN", // If you have a 'role' field in your user model
+        role: "ADMIN",
+      },
+    });
+    console.log("✅ Admin user created");
+  } else {
+    console.log("ℹ️ Admin user already exists");
+  }
+
+  // 📝 Blogpost toevoegen (indien nog niet bestaat)
+  const slug = "ultieme-ontspanning-massagestoel";
+  const existingPost = await prisma.post.findUnique({ where: { slug } });
+
+  if (!existingPost) {
+    await prisma.post.create({
+      data: {
+        title: "Ultieme ontspanning: waarom een massagestoel thuishoort in elk huis",
+        slug,
+        description: "Ontdek hoe een massagestoel bijdraagt aan jouw welzijn, dagelijkse ontspanning en fysieke gezondheid.",
+        content: "<h1> test </h1> ",
+        metaTitle: "Waarom een massagestoel jouw leven verandert | Relax-Time",
+        metaDescription: "Lees hoe een massagestoel dagelijkse stress vermindert en bijdraagt aan herstel en ontspanning.",
+        createdById: admin.id,
       },
     });
 
-    console.log("Admin user created successfully");
+    console.log("✅ Blogpost created");
   } else {
-    console.log("Admin user already exists");
+    console.log("ℹ️ Blogpost already exists");
   }
 }
 
 main()
-  .then(async () => {
-    await prisma.$disconnect();
-  })
+  .then(async () => await prisma.$disconnect())
   .catch(async (error) => {
     console.error(error);
     await prisma.$disconnect();

@@ -97,7 +97,7 @@ export default function ProductDetails({ product }: { product: FullProduct }) {
         </div>
 
         <div>
-          <h1 className="mb-2 text-3xl font-bold text-blue-900">
+          <h1 className="mb-2 text-3xl font-bold text-[#0a1e3b]">
             {product.title}
           </h1>
           <p className="mb-4 text-sm text-gray-500">Model: {product.model}</p>
@@ -128,7 +128,7 @@ export default function ProductDetails({ product }: { product: FullProduct }) {
           <div className="mb-6">
             {product.offerPrice ? (
               <div className="flex flex-wrap items-baseline gap-2">
-                <span className="text-2xl font-bold text-blue-900 sm:text-3xl">
+                <span className="text-2xl font-bold text-[#0a1e3b] sm:text-3xl">
                   {formatPrice(product.offerPrice)}
                 </span>
                 <span className="text-sm text-gray-500 line-through sm:text-lg">
@@ -170,7 +170,7 @@ export default function ProductDetails({ product }: { product: FullProduct }) {
             </div>
 
             <Button
-              className="flex-1 bg-blue-900 font-medium text-white hover:bg-blue-800"
+              className="flex-1 bg-[#0a1e3b] font-medium text-white hover:bg-blue-800"
               onClick={handleAddToCart}
               disabled={product.quantity === 0}
             >
@@ -268,7 +268,7 @@ export default function ProductDetails({ product }: { product: FullProduct }) {
               value="reviews"
               className="rounded-none border-b-2 border-transparent px-1 py-3 text-sm font-medium text-gray-600 transition-colors data-[state=active]:border-b-blue-900 data-[state=active]:text-blue-900"
             >
-              Reviews ({product.reviews.length})
+              Persoonlijk advies
             </TabsTrigger>
           </TabsList>
         </div>
@@ -397,12 +397,7 @@ export default function ProductDetails({ product }: { product: FullProduct }) {
               </div>
             ) : (
               <div>
-                <p className="mb-4 text-gray-600">
-                  Nog geen reviews. Wees de eerste!
-                </p>
-                <Button className="bg-blue-900 hover:bg-blue-800">
-                  Schrijf een review
-                </Button>
+                <h2>test</h2>
               </div>
             )}
           </TabsContent>

@@ -1,181 +1,61 @@
-// components/layout/Footer.tsx
 import Link from "next/link";
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
+import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
 import { Input } from "@/components/ui/input";
-import { Facebook, Instagram, Twitter } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export default function Footer() {
   return (
-    <footer className="bg-blue-900 text-white">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+    <footer className="w-full bg-[#0a1e3b] text-white pt-16">
+      <div className="max-w-screen-2xl mx-auto px-6 pb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          {/* Bedrijfsinfo */}
           <div>
-            <Image
-              src="/relax-logo.png"
-              alt="Relax-Time"
-              width={150}
-              height={40}
-              className="mb-4 h-8 w-auto"
-            />
-            <p className="mb-6 text-blue-100">
-              Uw specialist in premium massagestoelen voor thuis en op kantoor.
+            <h2 className="text-lg font-bold mb-4">Relax-Time.nl</h2>
+            <p className="text-gray-300">
+              Uw specialist in premium massagestoelen voor thuis en op kantoor. Ontdek ultieme ontspanning met onze zorgvuldig geselecteerde collectie.
             </p>
-            <div className="flex space-x-4">
-              <Link
-                href="https://facebook.com"
-                className="text-white hover:text-blue-200"
-                passHref
-              >
-                <Facebook />
-              </Link>
-              <Link
-                href="https://instagram.com"
-                className="text-white hover:text-blue-200"
-                passHref
-              >
-                <Instagram />
-              </Link>
-              <Link
-                href="https://twitter.com"
-                className="text-white hover:text-blue-200"
-                passHref
-              >
-                <Twitter />
-              </Link>
+            <div className="flex items-center gap-4 mt-4 text-xl text-white">
+              <FaFacebookF className="hover:text-gray-300 cursor-pointer" />
+              <FaInstagram className="hover:text-gray-300 cursor-pointer" />
+              <FaTwitter className="hover:text-gray-300 cursor-pointer" />
             </div>
           </div>
 
+          {/* Producten */}
           <div>
-            <h3 className="mb-4 text-lg font-semibold">Snel Links</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  href="/massagestoelen"
-                  className="text-blue-100 hover:text-white"
-                >
-                  Massagestoelen
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/aanbiedingen"
-                  className="text-blue-100 hover:text-white"
-                >
-                  Aanbiedingen
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/over-ons"
-                  className="text-blue-100 hover:text-white"
-                >
-                  Over Ons
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/contact"
-                  className="text-blue-100 hover:text-white"
-                >
-                  Contact
-                </Link>
-              </li>
-              <li>
-                <Link href="/blog" className="text-blue-100 hover:text-white">
-                  Blog
-                </Link>
-              </li>
+            <h3 className="text-lg font-bold mb-4">Producten</h3>
+            <ul className="space-y-2 text-gray-300">
+              <li><Link href="/producten/premium">Premium Massagestoelen</Link></li>
+              <li><Link href="/producten/compact">Compacte Massagestoelen</Link></li>
+              <li><Link href="/producten/kantoor">Kantoor Massagestoelen</Link></li>
+              <li><Link href="/producten/accessoires">Accessoires</Link></li>
+              <li><Link href="/aanbiedingen">Aanbiedingen</Link></li>
             </ul>
           </div>
 
+          {/* Informatie */}
           <div>
-            <h3 className="mb-4 text-lg font-semibold">Klantenservice</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  href="/verzending"
-                  className="text-blue-100 hover:text-white"
-                >
-                  Verzending & Levering
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/retourneren"
-                  className="text-blue-100 hover:text-white"
-                >
-                  Retourneren
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/garantie"
-                  className="text-blue-100 hover:text-white"
-                >
-                  Garantie
-                </Link>
-              </li>
-              <li>
-                <Link href="/faq" className="text-blue-100 hover:text-white">
-                  Veelgestelde Vragen
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/privacy"
-                  className="text-blue-100 hover:text-white"
-                >
-                  Privacy Beleid
-                </Link>
-              </li>
+            <h3 className="text-lg font-bold mb-4">Informatie</h3>
+            <ul className="space-y-2 text-gray-300">
+              <li><Link href="/over-ons">Over Ons</Link></li>
+              <li><Link href="/showroom">Showroom Bezoeken</Link></li>
+              <li><Link href="/verzending">Verzending & Levering</Link></li>
+              <li><Link href="/garantie">Garantie & Service</Link></li>
+              <li><Link href="/contact">Contact</Link></li>
             </ul>
           </div>
 
-          <div>
-            <h3 className="mb-4 text-lg font-semibold">Nieuwsbrief</h3>
-            <p className="mb-4 text-blue-100">
-              Schrijf je in voor onze nieuwsbrief en ontvang exclusieve
-              aanbiedingen.
-            </p>
-            <div className="flex flex-col space-y-2">
-              <Input
-                type="email"
-                placeholder="E-mailadres"
-                className="border-blue-700 bg-blue-800 text-white placeholder:text-blue-300"
-              />
-              <Button className="bg-white text-blue-900 hover:bg-blue-100">
-                Inschrijven
-              </Button>
-            </div>
-          </div>
         </div>
+      </div>
 
-        <div className="mt-12 border-t border-blue-800 pt-6 text-center text-blue-200">
-          <p>
-            © {new Date().getFullYear()} Relax-Time.nl - Alle rechten
-            voorbehouden.
-          </p>
-          <div className="mt-4 flex justify-center space-x-4">
-            <Image
-              src="/payment-ideal.svg"
-              alt="iDEAL"
-              width={40}
-              height={25}
-            />
-            <Image
-              src="/payment-mastercard.svg"
-              alt="Mastercard"
-              width={40}
-              height={25}
-            />
-            <Image src="/payment-visa.svg" alt="Visa" width={40} height={25} />
-            <Image
-              src="/payment-paypal.svg"
-              alt="PayPal"
-              width={40}
-              height={25}
-            />
+      {/* Footer bottom bar */}
+      <div className="border-t border-gray-700 text-sm text-gray-400 py-6 px-6 text-center">
+        <div className="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+          <p>© 2025 Relax-Time.nl. Alle rechten voorbehouden.</p>
+          <div className="flex gap-4">
+            <Link href="/privacybeleid">Privacybeleid</Link>
+            <Link href="/voorwaarden">Algemene Voorwaarden</Link>
+            <Link href="/cookies">Cookies</Link>
           </div>
         </div>
       </div>

@@ -64,7 +64,7 @@ export default function ProductFilters({
   return (
     <div className="space-y-8">
       <div>
-        <h3 className="mb-4 text-lg font-semibold text-blue-900">
+        <h3 className="mb-4 text-lg font-semibold text-[#0a1e3b]">
           Categorieën
         </h3>
         <div className="space-y-2">
@@ -90,30 +90,7 @@ export default function ProductFilters({
         </div>
       </div>
 
-      <div>
-        <h3 className="mb-4 text-lg font-semibold text-blue-900">
-          Prijsbereik
-        </h3>
-        <div className="space-y-6">
-          <Slider
-            id={priceRangeId}
-            defaultValue={[currentMinPrice, currentMaxPrice]}
-            min={MIN_PRICE}
-            max={MAX_PRICE}
-            step={500} // €5 in cents
-            onValueCommit={handlePriceChange}
-            className="my-6"
-          />
-          <div className="flex items-center justify-between">
-            <p className="text-sm text-gray-600">
-              {formatPrice(currentMinPrice)}
-            </p>
-            <p className="text-sm text-gray-600">
-              {formatPrice(currentMaxPrice)}
-            </p>
-          </div>
-        </div>
-      </div>
+      
 
       <div className="sm:hidden">
         <h3 className="mb-4 text-lg font-semibold text-blue-900">Sorteren</h3>

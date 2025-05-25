@@ -1,7 +1,5 @@
-// components/home/FaqSection.tsx
 "use client";
 
-import { useState } from "react";
 import {
   Accordion,
   AccordionContent,
@@ -44,10 +42,10 @@ export default function FaqSection() {
   ];
 
   return (
-    <section id="faq" className="w-full bg-blue-50 py-16">
+    <section id="faq" className="w-full bg-white py-20">
       <div className="container mx-auto px-4">
         <div className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-blue-900 md:text-4xl">
+          <h2 className="mb-4 text-3xl font-bold text-[#0a1e3b] md:text-4xl">
             Veelgestelde Vragen
           </h2>
           <p className="mx-auto max-w-2xl text-gray-600">
@@ -56,7 +54,7 @@ export default function FaqSection() {
           </p>
         </div>
 
-        <div className="mx-auto max-w-3xl overflow-hidden rounded-xl bg-white shadow-md">
+        <div className="mx-auto max-w-3xl overflow-hidden rounded-xl bg-[#f8fafc] shadow-md">
           <Accordion
             type="single"
             collapsible
@@ -68,10 +66,10 @@ export default function FaqSection() {
                 value={`item-${index}`}
                 className="px-4"
               >
-                <AccordionTrigger className="py-4 text-left font-medium text-blue-900 hover:text-blue-700 hover:no-underline">
+                <AccordionTrigger className="py-4 text-left font-medium text-[#0a1e3b] hover:text-blue-700 hover:no-underline">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="pb-4 text-gray-600">
+                <AccordionContent className="pb-4 text-gray-700">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
@@ -83,7 +81,7 @@ export default function FaqSection() {
           <p className="text-gray-600">Heeft u een andere vraag?</p>
           <a
             href="#contact"
-            className="font-medium text-blue-900 hover:underline"
+            className="font-medium text-[#0a1e3b] hover:underline"
           >
             Neem contact met ons op
           </a>

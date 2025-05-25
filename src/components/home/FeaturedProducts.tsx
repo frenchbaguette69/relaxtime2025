@@ -1,4 +1,3 @@
-// components/home/FeaturedProducts.tsx
 import ProductCard from "@/components/shared/ProductCard";
 import { PrismaClient } from "@prisma/client";
 import { unstable_noStore } from "next/cache";
@@ -7,30 +6,29 @@ const prisma = new PrismaClient();
 
 export default async function FeaturedProducts() {
   unstable_noStore();
+
   const featuredProducts = await prisma.product.findMany({
     include: {
       categories: true,
     },
-    take: 3,
+    take: 4,
     orderBy: {
       createdAt: "desc",
     },
   });
 
   return (
-    <section className="w-full bg-white py-16">
+    <section className="w-full bg-gray-50 py-16">
       <div className="container mx-auto px-4">
-        <div className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-blue-900 md:text-4xl">
-            Populaire Massagestoelen
-          </h2>
-          <p className="mx-auto max-w-2xl text-gray-600">
-            Onze best verkochte massagestoelen, geselecteerd door onze tevreden
-            klanten
+        <div className="md:text-left text-center mb-10">
+          <h2 className="text-4xl font-bold text-[#0a1e3b]">Bestsellers</h2>
+          <p className="text-gray-600 mt-2 max-w-xl">
+            Onze meest populaire massagestoelen, geliefd om hun kwaliteit, comfort
+            en therapeutische voordelen.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {featuredProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
