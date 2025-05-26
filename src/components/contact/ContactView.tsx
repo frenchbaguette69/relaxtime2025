@@ -28,8 +28,8 @@ export default function ContactView() {
     <main className="relative bg-gradient-to-b from-white to-blue-50">
       {/* Decorative elements */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-blue-900/5"></div>
-        <div className="absolute top-1/2 -left-48 h-96 w-96 rounded-full bg-blue-900/5"></div>
+        <div className="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-[#0a1e3b]/5"></div>
+        <div className="absolute top-1/2 -left-48 h-96 w-96 rounded-full bg-[#0a1e3b]/10"></div>
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
@@ -75,7 +75,7 @@ export default function ContactView() {
         >
           {activeTab === "message" && (
             <div className="grid md:grid-cols-5">
-              <div className="bg-blue-900 p-6 text-white sm:p-8 md:col-span-2 md:p-10">
+              <div className="bg-[#0a1e3b] p-6 text-white sm:p-8 md:col-span-2 md:p-10">
                 <h2 className="mb-6 text-xl font-semibold">Contactgegevens</h2>
 
                 <div className="space-y-6">
@@ -265,16 +265,7 @@ export default function ContactView() {
         </div>
 
         {/* Support section */}
-        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <SupportCard
-            icon={<MessageSquare className="h-6 w-6" />}
-            title="Live Chat"
-            description="Praat direct met een van onze medewerkers via de chat rechts onder op de website."
-            action="Start Chat"
-            onClick={() => {
-              /* Open chat */
-            }}
-          />
+        <div className="mt-16 grid gap-6 sm:grid-cols-2 ">
 
           <SupportCard
             icon={<Mail className="h-6 w-6" />}

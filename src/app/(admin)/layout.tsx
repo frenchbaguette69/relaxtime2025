@@ -31,7 +31,10 @@ export default async function RootLayout({
   console.log("sess", sess);
 
   // @ts-ignore
-  if (sess?.user?.role !== "ADMIN") return redirect("/api/auth/signin");
+  if (!sess) {
+  return redirect("/login");
+}
+
 
   return (
     <html lang="nl" className="relative">

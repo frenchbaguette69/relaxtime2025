@@ -92,7 +92,7 @@ export default function ProductList({
         <form onSubmit={handleSearch} className="relative w-[300px]">
           <Search className="text-muted-foreground absolute top-2.5 left-2 h-4 w-4" />
           <Input
-            placeholder="Search products..."
+            placeholder="Zoek producten..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             className="pl-8"
@@ -109,7 +109,7 @@ export default function ProductList({
             <ChevronLeft className="h-4 w-4" />
           </Button>
           <span className="text-sm">
-            Page {currentPage} of {totalPages || 1}
+            Pagina {currentPage} van {totalPages || 1}
           </span>
           <Button
             variant="outline"
@@ -126,13 +126,13 @@ export default function ProductList({
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Image</TableHead>
+              <TableHead>Foto</TableHead>
               <TableHead>Title</TableHead>
               <TableHead>Model</TableHead>
-              <TableHead>Price</TableHead>
-              <TableHead>Quantity</TableHead>
-              <TableHead>Categories</TableHead>
-              <TableHead className="text-right">Actions</TableHead>
+              <TableHead>Prijs</TableHead>
+              <TableHead>Voorraad</TableHead>
+              <TableHead>Categorie</TableHead>
+              <TableHead className="text-right">Acties</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>

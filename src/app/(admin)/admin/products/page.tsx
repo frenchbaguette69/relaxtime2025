@@ -16,7 +16,7 @@ export default async function ProductsPage({
   };
 }) {
   const page = parseInt(searchParams.page || "1");
-  const search = searchParams.search || "";
+  const search = (await searchParams).search || "";
 
   const where = search
     ? {
@@ -50,11 +50,11 @@ export default async function ProductsPage({
   return (
     <div className="container">
       <div className="mb-8 flex items-center justify-between">
-        <h1 className="text-3xl font-bold text-blue-900">Products</h1>
+        <h1 className="text-3xl font-bold text-blue-900">Producten</h1>
         <Link href="/admin/products/new" passHref>
           <Button className="bg-blue-900 hover:bg-blue-800">
             <PlusCircle className="mr-2 h-4 w-4" />
-            Add New Product
+            Voeg nieuw product toe
           </Button>
         </Link>
       </div>

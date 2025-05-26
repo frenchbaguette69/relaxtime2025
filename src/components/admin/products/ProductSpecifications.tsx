@@ -39,10 +39,10 @@ export default function ProductSpecifications({ form }: { form: any }) {
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>Name</TableHead>
-            <TableHead>Value</TableHead>
-            <TableHead>Group (Optional)</TableHead>
-            <TableHead className="w-[100px]">Actions</TableHead>
+            <TableHead>Naam</TableHead>
+            <TableHead>Waarde</TableHead>
+            <TableHead>Groep (Optioneel)</TableHead>
+            <TableHead className="w-[100px]">Acties</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -52,7 +52,7 @@ export default function ProductSpecifications({ form }: { form: any }) {
                 colSpan={4}
                 className="text-muted-foreground text-center"
               >
-                No specifications added yet
+                Geen specificaties toegevoegd. Voeg hieronder een nieuwe specificatie toe.
               </TableCell>
             </TableRow>
           )}
@@ -94,7 +94,7 @@ export default function ProductSpecifications({ form }: { form: any }) {
           <TableRow>
             <TableCell>
               <Input
-                placeholder="Add spec name"
+                placeholder="Voeg een specificatie naam toe"
                 value={newSpec.name}
                 onChange={(e) =>
                   setNewSpec({ ...newSpec, name: e.target.value })
@@ -103,7 +103,7 @@ export default function ProductSpecifications({ form }: { form: any }) {
             </TableCell>
             <TableCell>
               <Input
-                placeholder="Add spec value"
+                placeholder="Voeg een specificatie waarde toe"
                 value={newSpec.value}
                 onChange={(e) =>
                   setNewSpec({ ...newSpec, value: e.target.value })
@@ -112,7 +112,7 @@ export default function ProductSpecifications({ form }: { form: any }) {
             </TableCell>
             <TableCell>
               <Input
-                placeholder="Optional group"
+                placeholder="Optionele groep"
                 value={newSpec.group}
                 onChange={(e) =>
                   setNewSpec({ ...newSpec, group: e.target.value })

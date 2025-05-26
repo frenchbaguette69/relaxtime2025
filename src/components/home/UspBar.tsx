@@ -12,7 +12,7 @@ const uspItems = [
   },
   {
     icon: <FaShieldAlt className="h-5 w-5 text-[#0a1e3b]" />,
-    title: "5 Jaar Garantie",
+    title: "2 Jaar Garantie",
     description: "Op alle massagestoelen",
   },
   {

@@ -17,7 +17,7 @@ export default function FaqSection() {
     {
       question: "Wat is de garantieperiode op jullie massagestoelen?",
       answer:
-        "Al onze massagestoelen worden geleverd met een standaard garantie van 5 jaar op het frame en 2 jaar op elektronica en bewegende delen. We bieden ook de mogelijkheid om deze garantie uit te breiden. Meer informatie hierover vindt u op onze garantiepagina.",
+        "Al onze massagestoelen worden geleverd met een standaard garantie van 2 jaar op het frame en 2 jaar op elektronica en bewegende delen. We bieden ook de mogelijkheid om deze garantie uit te breiden. Meer informatie hierover vindt u op onze garantiepagina.",
     },
     {
       question: "Kan ik een massagestoel eerst uitproberen?",

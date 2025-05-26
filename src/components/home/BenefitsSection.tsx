@@ -20,7 +20,7 @@ export default function BenefitsSection() {
       ),
       title: "Kwaliteitsgarantie",
       description:
-        "Alle massagestoelen zijn gemaakt van hoogwaardige materialen en hebben 5 jaar garantie.",
+        "Alle massagestoelen zijn gemaakt van hoogwaardige materialen en hebben 2 jaar garantie.",
     },
     {
       icon: (

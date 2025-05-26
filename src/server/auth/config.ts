@@ -2,34 +2,24 @@ import { PrismaAdapter } from "@auth/prisma-adapter";
 import { type DefaultSession, type NextAuthConfig } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
-
 import { db } from "@/server/db";
-
+import type { Session, User } from "next-auth";
+import type { JWT } from "next-auth/jwt";
 /**
- * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
- * object and keep type safety.
- *
- * @see https://next-auth.js.org/getting-started/typescript#module-augmentation
+ * Module augmentation for `next-auth` types.
+ * Hiermee voeg je custom properties (zoals `id` en `role`) toe aan `session.user`
  */
 declare module "next-auth" {
   interface Session extends DefaultSession {
-    user: {
-      id: string;
-      // ...other properties
-      // role: UserRole;
-    } & DefaultSession["user"];
-  }
+  user: {
+    id: string;
+  } & DefaultSession["user"];
+}
 
-  // interface User {
-  //   // ...other properties
-  //   // role: UserRole;
-  // }
 }
 
 /**
- * Options for NextAuth.js used to configure adapters, providers, callbacks, etc.
- *
- * @see https://next-auth.js.org/configuration/options
+ * Configuratie voor NextAuth.js
  */
 export const authConfig = {
   theme: {
@@ -38,6 +28,9 @@ export const authConfig = {
   session: {
     strategy: "jwt",
   },
+  pages: {
+    signIn: "/login", // ✅ redirect naar je eigen loginpagina
+  },
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -45,50 +38,65 @@ export const authConfig = {
         email: { label: "Email", type: "email" },
         password: { label: "Password", type: "password" },
       },
-      async authorize(
-        credentials: Partial<Record<"email" | "password", unknown>>,
-      ) {
+      async authorize(credentials) {
+        // ✅ Zorg dat credentials niet leeg zijn
+        if (!credentials?.email || !credentials?.password) {
+          console.warn("Email of wachtwoord ontbreekt.");
+          return null;
+        }
+
+        // ✅ Haal gebruiker op via Prisma
         const user = await db.user.findUnique({
           where: { email: credentials.email as string },
         });
 
+        // ✅ Controleer wachtwoord
         if (user?.hashedPassword) {
           const isPasswordValid = await bcrypt.compare(
             credentials.password as string,
-            user.hashedPassword,
+            user.hashedPassword
           );
+
           if (isPasswordValid) {
             return user;
           }
         }
+
         return null;
       },
     }),
-    /**
-     * ...add more providers here.
-     *
-     * Most other providers require a bit more work than the Discord provider. For example, the
-     * GitHub provider requires you to add the `refresh_token_expires_in` field to the Account
-     * model. Refer to the NextAuth.js docs for the provider you want to use. Example:
-     *
-     * @see https://next-auth.js.org/providers/github
-     */
   ],
   adapter: PrismaAdapter(db),
   trustHost: true,
   callbacks: {
-    async jwt({ token, user }: { token: any; user: any }) {
-      if (user) token.user = user;
+    // ✅ JWT token verrijken met user info
+    async jwt({ token, user }) {
+  if (user) {
+    token.sub = user.id; // ✅ zodat token.sub beschikbaar is
+    token.user = {
+      id: user.id,
+      email: user.email,
+      name: user.name,
+    };
+  }
 
-      return token;
-    },
-    async session({ session, token }: { session: any; token: any }) {
-      const user = token?.user;
-      if (session?.user) {
-        session.user.id = user.id;
-        session.user.role = user.role; // Include role in session
-      }
-      return session;
-    },
+  return token;
+}
+,
+
+    // ✅ Session aanvullen met user info
+   async session({
+  session,
+  token,
+}: {
+  session: Session;
+  token: JWT;
+}) {
+  if (session.user && token?.sub) {
+    session.user.id = token.sub;
+  }
+
+  return session;
+},
   },
 } satisfies NextAuthConfig;

@@ -339,7 +339,7 @@ export default function OrderList({
           >
             <Search className="text-muted-foreground absolute top-2.5 left-2 h-4 w-4" />
             <Input
-              placeholder="Search by name, email, or ID..."
+              placeholder="Zoeken op order ID, klantnaam of e-mailadres"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               className="pl-8"
@@ -348,15 +348,15 @@ export default function OrderList({
 
           <Select value={status} onValueChange={handleStatusChange}>
             <SelectTrigger className="w-full sm:w-[180px]">
-              <SelectValue placeholder="Filter by status" />
+              <SelectValue placeholder="Filter op status" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="ALL">All Statuses</SelectItem>
-              <SelectItem value="PENDING">Pending</SelectItem>
-              <SelectItem value="PAID">Paid</SelectItem>
-              <SelectItem value="SHIPPED">Shipped</SelectItem>
-              <SelectItem value="DELIVERED">Delivered</SelectItem>
-              <SelectItem value="CANCELLED">Cancelled</SelectItem>
+              <SelectItem value="ALL">Alles</SelectItem>
+              <SelectItem value="PENDING">In behandeling</SelectItem>
+              <SelectItem value="PAID">Betaald</SelectItem>
+              <SelectItem value="SHIPPED">Verzonden</SelectItem>
+              <SelectItem value="DELIVERED">Bezorgd</SelectItem>
+              <SelectItem value="CANCELLED">Geannuleerd</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -371,7 +371,7 @@ export default function OrderList({
             <ChevronLeft className="h-4 w-4" />
           </Button>
           <span className="text-sm">
-            Page {currentPage} of {totalPages || 1}
+            Pagina {currentPage} van {totalPages || 1}
           </span>
           <Button
             variant="outline"
@@ -388,13 +388,13 @@ export default function OrderList({
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Order ID</TableHead>
-              <TableHead>Date</TableHead>
-              <TableHead>Customer</TableHead>
+              <TableHead>Bestelnummer</TableHead>
+              <TableHead>Datum</TableHead>
+              <TableHead>Klant</TableHead>
               <TableHead>Status</TableHead>
-              <TableHead>Payment</TableHead>
-              <TableHead>Total</TableHead>
-              <TableHead className="text-right">Actions</TableHead>
+              <TableHead>Betaling</TableHead>
+              <TableHead>Totaal</TableHead>
+              <TableHead className="text-right">Acties</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>

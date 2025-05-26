@@ -48,7 +48,7 @@ export default function ProductCategories({
       name="categories"
       render={({ field }) => (
         <FormItem>
-          <FormLabel>Categories</FormLabel>
+          <FormLabel>Categorieën</FormLabel>
           <div className="flex flex-col gap-2">
             <Popover>
               <PopoverTrigger asChild>
@@ -58,7 +58,7 @@ export default function ProductCategories({
                   className="w-full justify-between"
                 >
                   {selectedCategories.length > 0
-                    ? `${selectedCategories.length} categories selected`
+                    ? `${selectedCategories.length} categorie geslecteerd`
                     : "Select categories"}
                   <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                 </Button>

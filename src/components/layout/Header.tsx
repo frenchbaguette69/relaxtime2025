@@ -36,7 +36,7 @@ export default function Header() {
         {/* Desktop nav + icons */}
         <div className="hidden md:flex items-center space-x-6">
           <nav className="flex items-center space-x-6 text-sm font-medium text-black">
-            <Link href="/producten" className="hover:text-blue-700">Collectie</Link>
+            <Link href="/producten" className="hover:text-blue-700">Producten</Link>
             <Link href="/blog" className="hover:text-blue-700">Blog</Link>
             <Link href="/over-ons" className="hover:text-blue-700">Over Ons</Link>
             <Link href="/contact" className="hover:text-blue-700">Contact</Link>
@@ -76,7 +76,7 @@ export default function Header() {
             className="overflow-hidden bg-white shadow-md md:hidden"
           >
             <ul className="flex flex-col space-y-4 px-6 py-4 text-sm font-medium text-blue-900">
-              <li><Link href="/producten" onClick={() => setMenuOpen(false)}>Collectie</Link></li>
+              <li><Link href="/producten" onClick={() => setMenuOpen(false)}>Producten</Link></li>
               <li><Link href="/blog" onClick={() => setMenuOpen(false)}>Blog</Link></li>
               <li><Link href="/over-ons" onClick={() => setMenuOpen(false)}>Over Ons</Link></li>
               <li><Link href="/contact" onClick={() => setMenuOpen(false)}>Contact</Link></li>

@@ -51,7 +51,7 @@ export default async function OrdersPage({
   return (
     <div className="container">
       <div className="mb-8 flex items-center justify-between">
-        <h1 className="text-3xl font-bold text-blue-900">Orders</h1>
+        <h1 className="text-3xl font-bold text-blue-900">Bestellingen</h1>
       </div>
       <OrderList
         orders={orders}

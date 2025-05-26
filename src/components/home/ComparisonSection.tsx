@@ -66,7 +66,7 @@ export default function ComparisonSection() {
         zero_g: "3 Posities",
         customMemory: true,
         intensity: "8 Niveaus",
-        warranty: "5 Jaar",
+        warranty: "2 Jaar",
       },
     },
   ];

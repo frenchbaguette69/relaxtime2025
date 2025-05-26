@@ -160,7 +160,7 @@ export default function ImageUpload({
           className="border-2 border-dashed border-blue-900/50 hover:border-blue-900"
         >
           <ImagePlus className="mr-2 h-4 w-4" />
-          Add Image
+          Voeg afbeeldingen toe
         </Button>
       </div>
     </div>

@@ -17,11 +17,6 @@ export default function Cta() {
 
         {/* Buttons */}
         <div className="flex flex-col md:flex-row gap-4">
-          <Link href="/aanbiedingen">
-            <Button variant="secondary" className="text-[#0a1e3b] bg-white hover:bg-gray-100">
-              Bekijk Aanbiedingen
-            </Button>
-          </Link>
           <Link href="/contact">
             <Button variant="secondary" className="text-[#0a1e3b] bg-white hover:bg-gray-100">
               Vraag Advies aan

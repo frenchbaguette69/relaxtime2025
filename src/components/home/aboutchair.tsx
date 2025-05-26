@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { FaCheckCircle } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const features = [
   {
@@ -52,16 +53,17 @@ export default function AboutChair() {
               </li>
             ))}
           </ul>
-
+        <Link href="/producten">
           <Button className="bg-[#0a1e3b] text-white hover:bg-[#122d5a] px-6 py-4">
-            Lees Meer Over De Voordelen
+            Bekijk ons aanbod
           </Button>
+          </Link>
         </div>
 
         {/* Afbeelding */}
         <div className="w-full h-full relative rounded-xl bg-gray-100 overflow-hidden">
           <Image
-            src="/placeholder.png" // vervang met echte afbeelding
+            src="/comfort.webp" // vervang met echte afbeelding
             alt="Massagestoel voordelen"
             fill
             className="object-cover rounded-xl"

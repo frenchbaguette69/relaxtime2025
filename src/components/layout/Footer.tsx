@@ -1,9 +1,23 @@
 import Link from "next/link";
 import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 
-export default function Footer() {
+type Category = {
+  id: string;
+  name: string;
+  description: string | null;
+  cover: string | null;
+  specs?: string | null;
+  productCount: number;
+};
+
+export default async function Footer() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/categories`, {
+  cache: "no-store",
+});
+
+
+  const categories: Category[] = await res.json();
+
   return (
     <footer className="w-full bg-[#0a1e3b] text-white pt-16">
       <div className="max-w-screen-2xl mx-auto px-6 pb-12">
@@ -23,13 +37,15 @@ export default function Footer() {
 
           {/* Producten */}
           <div>
-            <h3 className="text-lg font-bold mb-4">Producten</h3>
+            <h3 className="text-lg font-bold mb-4">Categorieën</h3>
             <ul className="space-y-2 text-gray-300">
-              <li><Link href="/producten/premium">Premium Massagestoelen</Link></li>
-              <li><Link href="/producten/compact">Compacte Massagestoelen</Link></li>
-              <li><Link href="/producten/kantoor">Kantoor Massagestoelen</Link></li>
-              <li><Link href="/producten/accessoires">Accessoires</Link></li>
-              <li><Link href="/aanbiedingen">Aanbiedingen</Link></li>
+              {categories.map((category) => (
+                <li key={category.id}>
+                  <Link href={`/producten?catergory=${category.id}`}>
+                    {category.name} ({category.productCount})
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -52,11 +68,6 @@ export default function Footer() {
       <div className="border-t border-gray-700 text-sm text-gray-400 py-6 px-6 text-center">
         <div className="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
           <p>© 2025 Relax-Time.nl. Alle rechten voorbehouden.</p>
-          <div className="flex gap-4">
-            <Link href="/privacybeleid">Privacybeleid</Link>
-            <Link href="/voorwaarden">Algemene Voorwaarden</Link>
-            <Link href="/cookies">Cookies</Link>
-          </div>
         </div>
       </div>
     </footer>

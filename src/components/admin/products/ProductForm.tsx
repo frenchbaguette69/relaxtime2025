@@ -165,7 +165,7 @@ export default function ProductForm({
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <div className="flex items-center justify-between">
           <h2 className="text-3xl font-bold text-blue-900">
-            {product ? "Edit Product" : "Create New Product"}
+            {product ? "Product bewerken" : "Nieuw product toevoegen"}
           </h2>
           <div className="flex gap-2">
             <Button
@@ -194,16 +194,16 @@ export default function ProductForm({
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
           <TabsList className="grid w-full grid-cols-4">
-            <TabsTrigger value="basic">Basic Info</TabsTrigger>
-            <TabsTrigger value="content">Content & Images</TabsTrigger>
-            <TabsTrigger value="specs">Specifications</TabsTrigger>
-            <TabsTrigger value="inventory">Pricing & Inventory</TabsTrigger>
+            <TabsTrigger value="basic">Basis Info</TabsTrigger>
+            <TabsTrigger value="content">Beschrijving & Foto's</TabsTrigger>
+            <TabsTrigger value="specs">Specificaties</TabsTrigger>
+            <TabsTrigger value="inventory">Prijs en voorraad</TabsTrigger>
           </TabsList>
 
           <TabsContent value="basic" className="w-full">
             <Card>
               <CardHeader>
-                <CardTitle>Basic Information</CardTitle>
+                <CardTitle>Basis Informatie</CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="grid grid-cols-2 gap-6">
@@ -212,7 +212,7 @@ export default function ProductForm({
                     name="model"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Model</FormLabel>
+                        <FormLabel>Modelnummer</FormLabel>
                         <FormControl>
                           <Input placeholder="Model number" {...field} />
                         </FormControl>
@@ -226,7 +226,7 @@ export default function ProductForm({
                     name="title"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Title</FormLabel>
+                        <FormLabel>Titel</FormLabel>
                         <FormControl>
                           <Input placeholder="Product title" {...field} />
                         </FormControl>
@@ -246,7 +246,7 @@ export default function ProductForm({
                         <Input placeholder="product-url-slug" {...field} />
                       </FormControl>
                       <FormDescription>
-                        Auto-generated from title. Used in product URLs.
+                        gaat automatisch aan de hand van de titel, maar kan handmatig worden aangepast.
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
@@ -258,7 +258,7 @@ export default function ProductForm({
                   name="summary"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Summary</FormLabel>
+                      <FormLabel>Meta beschrijving</FormLabel>
                       <FormControl>
                         <Textarea
                           placeholder="Brief product summary"
@@ -276,7 +276,7 @@ export default function ProductForm({
                   name="shortDescription"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Short Description</FormLabel>
+                      <FormLabel>Korte USP Description</FormLabel>
                       <FormControl>
                         <Textarea
                           placeholder="Short product description"
@@ -297,7 +297,7 @@ export default function ProductForm({
           <TabsContent value="content">
             <Card>
               <CardHeader>
-                <CardTitle>Content & Images</CardTitle>
+                <CardTitle>Beschrijving & Foto's</CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
                 <FormField
@@ -305,7 +305,7 @@ export default function ProductForm({
                   name="description"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Detailed Description</FormLabel>
+                      <FormLabel>Beschrijving</FormLabel>
                       <FormControl>
                         <RichTextEditor
                           value={field.value}
@@ -324,7 +324,7 @@ export default function ProductForm({
                   name="images"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Product Images</FormLabel>
+                      <FormLabel>Product Foto's</FormLabel>
                       <FormControl>
                         <ImageUpload
                           value={field.value}
@@ -337,8 +337,7 @@ export default function ProductForm({
                         />
                       </FormControl>
                       <FormDescription>
-                        Upload product images. First image will be used as the
-                        thumbnail.
+                        upload meerdere afbeeldingen voor het product. Zorg ervoor dat de afbeeldingen van hoge kwaliteit zijn.
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
@@ -351,7 +350,7 @@ export default function ProductForm({
           <TabsContent value="specs">
             <Card>
               <CardHeader>
-                <CardTitle>Product Specifications</CardTitle>
+                <CardTitle>Product Specificaties</CardTitle>
               </CardHeader>
               <CardContent>
                 <ProductSpecifications form={form} />
@@ -362,7 +361,7 @@ export default function ProductForm({
           <TabsContent value="inventory">
             <Card>
               <CardHeader>
-                <CardTitle>Pricing & Inventory</CardTitle>
+                <CardTitle>Prijs en Voorraad</CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="grid grid-cols-2 gap-6">
@@ -371,7 +370,7 @@ export default function ProductForm({
                     name="price"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Price ($)</FormLabel>
+                        <FormLabel>Standaard prijs</FormLabel>
                         <FormControl>
                           <Input
                             type="number"
@@ -382,7 +381,7 @@ export default function ProductForm({
                           />
                         </FormControl>
                         <FormDescription>
-                          Regular price in dollars
+                          Normale prijs
                         </FormDescription>
                         <FormMessage />
                       </FormItem>
@@ -394,7 +393,7 @@ export default function ProductForm({
                     name="offerPrice"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Offer Price ($)</FormLabel>
+                        <FormLabel>Actie prijs</FormLabel>
                         <FormControl>
                           <Input
                             type="number"
@@ -411,7 +410,7 @@ export default function ProductForm({
                             }}
                           />
                         </FormControl>
-                        <FormDescription>Sale price (optional)</FormDescription>
+                        <FormDescription>Korting prijs optioneel</FormDescription>
                         <FormMessage />
                       </FormItem>
                     )}
@@ -423,7 +422,7 @@ export default function ProductForm({
                   name="quantity"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Quantity</FormLabel>
+                      <FormLabel>Voorraad</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -433,7 +432,7 @@ export default function ProductForm({
                         />
                       </FormControl>
                       <FormDescription>
-                        Number of units in stock
+                        Aantal stuks op voorraad. Vul 0 in als het product niet op voorraad is.
                       </FormDescription>
                       <FormMessage />
                     </FormItem>

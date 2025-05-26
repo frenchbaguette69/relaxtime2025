@@ -47,7 +47,7 @@ export default function HeroSection() {
             </div>
             <div className="flex items-center gap-2">
               <FaShieldAlt className="text-white" />
-              5 Jaar Garantie
+              2 Jaar Garantie
             </div>
             <div className="flex items-center gap-2">
               <FaClock className="text-white" />
