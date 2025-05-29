@@ -127,7 +127,7 @@ export default function CartSidebar() {
                 <span className="text-sm text-gray-600">Verzendkosten</span>
                 <span className="text-sm font-medium">Gratis</span>
               </div>
-              <div className="flex justify-between py-2 font-semibold text-blue-900">
+              <div className="flex justify-between py-2 font-semibold text-[#0a1e3b]">
                 <span>Totaal</span>
                 <span>{formatPrice(total)}</span>
               </div>
@@ -136,7 +136,7 @@ export default function CartSidebar() {
                 <Link href={"/checkout"}>
                   <Button
                     onClick={closeCart}
-                    className="w-full bg-blue-900 hover:bg-blue-800"
+                    className="w-full bg-[#0a1e3b] hover:bg-blue-800"
                   >
                     Afrekenen
                   </Button>

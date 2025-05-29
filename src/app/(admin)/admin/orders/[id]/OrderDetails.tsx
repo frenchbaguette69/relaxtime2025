@@ -160,13 +160,13 @@ export default function OrderDetailsClient({ order }: { order: any }) {
             </Button>
           </Link>
           <h1 className="text-2xl font-bold text-blue-900 md:text-3xl">
-            Order Details
+            Bestelling details
           </h1>
         </div>
         <div className="flex flex-wrap gap-3">
           <Button variant="outline" onClick={handlePrint}>
             <Printer className="mr-2 h-4 w-4" />
-            Print Order
+            Print Bestelling
           </Button>
           <AlertDialog>
             <AlertDialogTrigger asChild>
@@ -174,14 +174,13 @@ export default function OrderDetailsClient({ order }: { order: any }) {
             </AlertDialogTrigger>
             <AlertDialogContent>
               <AlertDialogHeader>
-                <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+                <AlertDialogTitle>Weet je het zeker?</AlertDialogTitle>
                 <AlertDialogDescription>
-                  This action cannot be undone. This will permanently delete the
-                  order and remove all associated data.
+                  Hierdoor wordt alles van deze bestelling verwijderd
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
-                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                <AlertDialogCancel>Annuleer</AlertDialogCancel>
                 <AlertDialogAction
                   onClick={handleDeleteOrder}
                   className="bg-red-500 hover:bg-red-600"
@@ -203,7 +202,7 @@ export default function OrderDetailsClient({ order }: { order: any }) {
               <FileText className="h-5 w-5 text-blue-700" />
             </div>
             <div>
-              <div className="text-sm text-blue-700">Order ID</div>
+              <div className="text-sm text-blue-700">Bestel ID</div>
               <div className="flex items-center gap-2">
                 <span className="font-mono font-medium">{order.id}</span>
                 <TooltipProvider>
@@ -219,7 +218,7 @@ export default function OrderDetailsClient({ order }: { order: any }) {
                       </Button>
                     </TooltipTrigger>
                     <TooltipContent>
-                      <p>Copy Order ID</p>
+                      <p>kopieer bestel ID</p>
                     </TooltipContent>
                   </Tooltip>
                 </TooltipProvider>
@@ -229,7 +228,7 @@ export default function OrderDetailsClient({ order }: { order: any }) {
 
           <div className="flex items-center space-x-4">
             <div className="text-sm">
-              <span className="text-blue-700">Date: </span>
+              <span className="text-blue-700">Datum: </span>
               <span className="font-medium">
                 {format(new Date(order.createdAt), "PPP")}
               </span>
@@ -252,7 +251,7 @@ export default function OrderDetailsClient({ order }: { order: any }) {
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <h2 className="text-xl font-semibold text-blue-900">
-                Order Items
+                Bestelde producten
               </h2>
               <div className="rounded-full bg-blue-100 px-4 py-1 text-sm text-blue-900">
                 {order.items.length} item{order.items.length !== 1 ? "s" : ""}
@@ -264,9 +263,9 @@ export default function OrderDetailsClient({ order }: { order: any }) {
                 <TableHeader className="bg-gray-50">
                   <TableRow>
                     <TableHead>Product</TableHead>
-                    <TableHead className="text-right">Price</TableHead>
-                    <TableHead className="text-right">Quantity</TableHead>
-                    <TableHead className="text-right">Total</TableHead>
+                    <TableHead className="text-right">Prijs</TableHead>
+                    <TableHead className="text-right">Aantal</TableHead>
+                    <TableHead className="text-right">Totaal</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -296,7 +295,7 @@ export default function OrderDetailsClient({ order }: { order: any }) {
                                   </Button>
                                 </TooltipTrigger>
                                 <TooltipContent>
-                                  <p>Copy Product ID</p>
+                                  <p>Kopieer product ID</p>
                                 </TooltipContent>
                               </Tooltip>
                             </TooltipProvider>
@@ -332,7 +331,7 @@ export default function OrderDetailsClient({ order }: { order: any }) {
               <div className="flex justify-end">
                 <div className="w-64 space-y-2">
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Subtotal</span>
+                    <span className="text-gray-600">Subtotaal</span>
                     <span>{formatPrice(order.subtotal)}</span>
                   </div>
                   <Separator />
@@ -361,10 +360,10 @@ export default function OrderDetailsClient({ order }: { order: any }) {
                   </div>
                   <div>
                     <h2 className="text-lg font-semibold text-blue-900">
-                      Order Status
+                      Bestel Status
                     </h2>
                     <div className="flex items-center gap-1.5">
-                      <span className="text-sm text-gray-600">Current:</span>
+                      <span className="text-sm text-gray-600">Huidige:</span>
                       <span
                         className="rounded-full px-2.5 py-0.5 text-sm font-medium"
                         style={{
@@ -405,11 +404,11 @@ export default function OrderDetailsClient({ order }: { order: any }) {
                       <SelectValue placeholder="Change status" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="PENDING">Pending</SelectItem>
-                      <SelectItem value="PAID">Paid</SelectItem>
-                      <SelectItem value="SHIPPED">Shipped</SelectItem>
-                      <SelectItem value="DELIVERED">Delivered</SelectItem>
-                      <SelectItem value="CANCELLED">Cancelled</SelectItem>
+                      <SelectItem value="PENDING">in behandeling</SelectItem>
+                      <SelectItem value="PAID">betaald</SelectItem>
+                      <SelectItem value="SHIPPED">verzonden</SelectItem>
+                      <SelectItem value="DELIVERED">bezorgd</SelectItem>
+                      <SelectItem value="CANCELLED">geannuleerd</SelectItem>
                     </SelectContent>
                   </Select>
                   <Button
@@ -437,7 +436,7 @@ export default function OrderDetailsClient({ order }: { order: any }) {
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100">
                   <User className="h-5 w-5 text-blue-700" />
                 </div>
-                <h3 className="text-lg font-semibold">Customer Information</h3>
+                <h3 className="text-lg font-semibold">klant Informatie</h3>
               </div>
               <div className="space-y-3 p-4">
                 <div>
@@ -461,7 +460,7 @@ export default function OrderDetailsClient({ order }: { order: any }) {
                           </Button>
                         </TooltipTrigger>
                         <TooltipContent>
-                          <p>Copy Email</p>
+                          <p>Kopieer Email</p>
                         </TooltipContent>
                       </Tooltip>
                     </TooltipProvider>
@@ -478,7 +477,7 @@ export default function OrderDetailsClient({ order }: { order: any }) {
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100">
                   <CreditCard className="h-5 w-5 text-blue-700" />
                 </div>
-                <h3 className="text-lg font-semibold">Payment Information</h3>
+                <h3 className="text-lg font-semibold">Betaal Informatie</h3>
               </div>
               <div className="space-y-3 p-4">
                 <div className="flex items-center justify-between">
@@ -506,7 +505,7 @@ export default function OrderDetailsClient({ order }: { order: any }) {
                 </div>
                 {order.paymentIntentId && (
                   <div>
-                    <p className="text-sm text-gray-500">Payment ID</p>
+                    <p className="text-sm text-gray-500">Betaal ID</p>
                     <div className="flex items-center gap-1">
                       <p className="max-w-[180px] overflow-hidden font-mono text-sm text-ellipsis whitespace-nowrap">
                         {order.paymentIntentId}
@@ -526,7 +525,7 @@ export default function OrderDetailsClient({ order }: { order: any }) {
                             </Button>
                           </TooltipTrigger>
                           <TooltipContent>
-                            <p>Copy Payment ID</p>
+                            <p>Kopieer betaal ID</p>
                           </TooltipContent>
                         </Tooltip>
                       </TooltipProvider>
@@ -545,7 +544,7 @@ export default function OrderDetailsClient({ order }: { order: any }) {
                   <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100">
                     <Home className="h-5 w-5 text-blue-700" />
                   </div>
-                  <h3 className="text-lg font-semibold">Shipping Address</h3>
+                  <h3 className="text-lg font-semibold">Bezorg adres</h3>
                 </div>
                 <div className="space-y-1 p-4">
                   <p className="font-medium">
@@ -576,7 +575,7 @@ export default function OrderDetailsClient({ order }: { order: any }) {
                   </p>
                   {order.shippingAddress.phone && (
                     <p className="mt-1 text-gray-700">
-                      <span className="text-sm text-gray-500">Phone: </span>
+                      <span className="text-sm text-gray-500">Telefoonnummer: </span>
                       {order.shippingAddress.phone}
                     </p>
                   )}
@@ -593,7 +592,7 @@ export default function OrderDetailsClient({ order }: { order: any }) {
                   <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100">
                     <FileText className="h-5 w-5 text-blue-700" />
                   </div>
-                  <h3 className="text-lg font-semibold">Order Notes</h3>
+                  <h3 className="text-lg font-semibold">Opmerking bestelling</h3>
                 </div>
                 <div className="p-4">
                   <p className="text-gray-700">{order.notes}</p>

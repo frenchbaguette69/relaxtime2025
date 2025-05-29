@@ -452,7 +452,7 @@ export default function OrderList({
                       </DialogTrigger>
                       <DialogContent className="sm:max-w-[425px]">
                         <DialogHeader>
-                          <DialogTitle>Update Order Status</DialogTitle>
+                          <DialogTitle>Update bestelling status</DialogTitle>
                         </DialogHeader>
                         <UpdateOrderStatus
                           orderId={order.id}
