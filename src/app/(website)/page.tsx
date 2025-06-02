@@ -28,6 +28,7 @@ export default function Home() {
       <UspBar />
             <div className="w-full border-t border-gray-200" />
             <CategorySection />
+            
       <FeaturedProducts />
       <AboutChair />
       <CustomerReviews />

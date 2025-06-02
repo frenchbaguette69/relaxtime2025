@@ -35,37 +35,54 @@ export default function RootLayout({
         <CartProvider>
           <Header />
           {children}
+          
+          {/* Google Analytics */}
+          <Script
+            src="https://www.googletagmanager.com/gtag/js?id=G-CDERCYYDHY"
+            strategy="afterInteractive"
+          />
+          <Script id="google-analytics" strategy="afterInteractive">
+            {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-CDERCYYDHY');
+            `}
+          </Script>
+
+          {/* Webwinkelkeur Configuration */}
           <Script id="webwinkelkeur-config" strategy="afterInteractive">
-  {`
-    _webwinkelkeur_sidebar = true;
-    _webwinkelkeur_sidebar_position = "left";
-    _webwinkelkeur_sidebar_top = "300";
-    _webwinkelkeur_sidebar_theme = "dark";
-    _webwinkelkeur_mobile = "top_bar";
-    _webwinkelkeur_mobile_tab = "left";
-    _webwinkelkeur_tooltip = true;
-    _webwinkelkeur_language = "nl";
-  `}
-</Script>
-<Script
-  id="webwinkelkeur-script"
-  strategy="afterInteractive"
-  dangerouslySetInnerHTML={{
-    __html: `
-      (function(n,r){
-        var e=document.createElement("script");
-        e.async=!0;
-        e.src=n+"/sidebar.js?id="+r+"&c="+c(10,r);
-        var t=document.getElementsByTagName("script")[0];
-        t.parentNode.insertBefore(e,t);
-        function c(s,i){
-          var o=Date.now(),a=s*6e4,_=(Math.sin(i)||0)*a;
-          return Math.floor((o+_)/a)
-        }
-      })("https://dashboard.webwinkelkeur.nl", 1219550);
-    `,
-  }}
-/>
+            {`
+              _webwinkelkeur_sidebar = true;
+              _webwinkelkeur_sidebar_position = "left";
+              _webwinkelkeur_sidebar_top = "300";
+              _webwinkelkeur_sidebar_theme = "dark";
+              _webwinkelkeur_mobile = "top_bar";
+              _webwinkelkeur_mobile_tab = "left";
+              _webwinkelkeur_tooltip = true;
+              _webwinkelkeur_language = "nl";
+            `}
+          </Script>
+          <Script
+            id="webwinkelkeur-script"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `
+                (function(n,r){
+                  var e=document.createElement("script");
+                  e.async=!0;
+                  e.src=n+"/sidebar.js?id="+r+"&c="+c(10,r);
+                  var t=document.getElementsByTagName("script")[0];
+                  t.parentNode.insertBefore(e,t);
+                  function c(s,i){
+                    var o=Date.now(),a=s*6e4,_=(Math.sin(i)||0)*a;
+                    return Math.floor((o+_)/a)
+                  }
+                })("https://dashboard.webwinkelkeur.nl", 1219550);
+              `,
+            }}
+          />
+          
           <CartSidebar />
           <Footer />
           <Toaster position="top-center" richColors />
