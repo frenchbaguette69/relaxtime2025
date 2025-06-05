@@ -24,7 +24,7 @@ export default function ProductsPage() {
   const categoryId = searchParams.get("category") || "";
   const minPrice = searchParams.get("minPrice") || "";
   const maxPrice = searchParams.get("maxPrice") || "";
-  const sort = searchParams.get("sort") || "newest";
+  const sort = searchParams.get("sort") || "price-low";
 
   const fetchProducts = useCallback(async (params: URLSearchParams) => {
     setLoading(true);
@@ -158,14 +158,15 @@ export default function ProductsPage() {
           </p>
           <div className="hidden sm:block">
             <select
-              value={sort}
-              onChange={(e) => updateFilters({ sort: e.target.value })}
-              className="rounded-md border p-2 text-sm"
-            >
-              <option value="newest">Nieuwste eerst</option>
-              <option value="price-low">Prijs: laag naar hoog</option>
-              <option value="price-high">Prijs: hoog naar laag</option>
-            </select>
+  value={sort}
+  onChange={(e) => updateFilters({ sort: e.target.value })}
+  className="rounded-md border p-2 text-sm"
+>
+  <option value="price-low">Prijs: laag naar hoog</option>
+  <option value="price-high">Prijs: hoog naar laag</option>
+  <option value="newest">Nieuwste eerst</option>
+</select>
+
           </div>
         </div>
 

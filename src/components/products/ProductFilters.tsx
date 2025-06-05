@@ -93,26 +93,27 @@ export default function ProductFilters({
       
 
       <div className="sm:hidden">
-        <h3 className="mb-4 text-lg font-semibold text-blue-900">Sorteren</h3>
-        <RadioGroup
-          value={sort}
-          onValueChange={handleSortChange}
-          className="space-y-2"
-        >
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="newest" id="sort-newest" />
-            <Label htmlFor="sort-newest">Nieuwste eerst</Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="price-low" id="sort-price-low" />
-            <Label htmlFor="sort-price-low">Prijs: laag naar hoog</Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="price-high" id="sort-price-high" />
-            <Label htmlFor="sort-price-high">Prijs: hoog naar laag</Label>
-          </div>
-        </RadioGroup>
-      </div>
+  <h3 className="mb-4 text-lg font-semibold text-blue-900">Sorteren</h3>
+  <RadioGroup
+    value={sort}
+    onValueChange={handleSortChange}
+    className="space-y-2"
+  >
+    <div className="flex items-center space-x-2">
+      <RadioGroupItem value="price-low" id="sort-price-low" />
+      <Label htmlFor="sort-price-low">Prijs: laag naar hoog</Label>
+    </div>
+    <div className="flex items-center space-x-2">
+      <RadioGroupItem value="price-high" id="sort-price-high" />
+      <Label htmlFor="sort-price-high">Prijs: hoog naar laag</Label>
+    </div>
+    <div className="flex items-center space-x-2">
+      <RadioGroupItem value="newest" id="sort-newest" />
+      <Label htmlFor="sort-newest">Nieuwste eerst</Label>
+    </div>
+  </RadioGroup>
+</div>
+
     </div>
   );
 }

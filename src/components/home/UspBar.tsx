@@ -17,7 +17,7 @@ const uspItems = [
   },
   {
     icon: <FaClock className="h-5 w-5 text-[#0a1e3b]" />,
-    title: "30 Dagen Proefperiode",
+    title: "14 Dagen Proefperiode",
     description: "Niet tevreden? Geld terug",
   },
   {

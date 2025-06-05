@@ -54,7 +54,6 @@ export default async function Footer() {
             <h3 className="text-lg font-bold mb-4">Informatie</h3>
             <ul className="space-y-2 text-gray-300">
               <li><Link href="/over-ons">Over Ons</Link></li>
-              <li><Link href="/showroom">Showroom Bezoeken</Link></li>
               <li><Link href="/verzending">Verzending & Levering</Link></li>
               <li><Link href="/garantie">Garantie & Service</Link></li>
               <li><Link href="/contact">Contact</Link></li>

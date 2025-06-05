@@ -51,7 +51,7 @@ export default function HeroSection() {
             </div>
             <div className="flex items-center gap-2">
               <FaClock className="text-white" />
-              30 Dagen Proefperiode
+              14 Dagen Proefperiode
             </div>
           </div>
         </div>

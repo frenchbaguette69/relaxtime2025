@@ -20,11 +20,6 @@ export default function FaqSection() {
         "Al onze massagestoelen worden geleverd met een standaard garantie van 2 jaar op het frame en 2 jaar op elektronica en bewegende delen. We bieden ook de mogelijkheid om deze garantie uit te breiden. Meer informatie hierover vindt u op onze garantiepagina.",
     },
     {
-      question: "Kan ik een massagestoel eerst uitproberen?",
-      answer:
-        "Absoluut! Wij hebben een showroom in Amsterdam waar u alle modellen kunt uitproberen. Daarnaast bieden wij een 30 dagen niet-goed-geld-terug garantie, waardoor u de stoel thuis kunt testen. Maak een afspraak via onze contactpagina voor een persoonlijke demonstratie.",
-    },
-    {
       question: "Welke onderhoudsmaatregelen zijn nodig voor een massagestoel?",
       answer:
         "Onze massagestoelen zijn ontworpen voor minimaal onderhoud. We raden aan om de bekleding regelmatig te reinigen met een licht vochtige doek en milde zeep. Voor lederen stoelen is het aan te raden om twee keer per jaar een lederbehandeling toe te passen. Verder adviseren we om de stoel jaarlijks te laten controleren door onze technische dienst.",

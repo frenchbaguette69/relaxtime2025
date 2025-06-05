@@ -14,7 +14,8 @@ export async function GET(request: NextRequest) {
   const maxPrice = searchParams.get("maxPrice")
     ? parseInt(searchParams.get("maxPrice")!)
     : undefined;
-  const sort = searchParams.get("sort") || "newest";
+  const sort = searchParams.get("sort") || "price-low";
+
 
   try {
     // Build the query for products

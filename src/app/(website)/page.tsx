@@ -31,7 +31,6 @@ export default function Home() {
             
       <FeaturedProducts />
       <AboutChair />
-      <CustomerReviews />
       <ContactSection />
       <Cta />
       <FaqSection />
