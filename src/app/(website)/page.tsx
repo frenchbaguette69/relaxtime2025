@@ -16,7 +16,7 @@ import Cta from "@/components/home/cta";
 export const metadata = {
   title: "Relax-Time | Premium Massagestoelen voor Thuis en Kantoor",
   description:
-    "Ontdek de beste massagestoelen voor optimale ontspanning. Hoogwaardige kwaliteit, deskundig advies en snelle levering in heel Nederland.",
+    "Ontdek de beste massagestoelen voor optimale ontspanning. Hoogwaardige kwaliteit, deskundig advies en snelle levering in heel Nederland en België.",
   keywords:
     "massagestoelen, ontspanning, massage, rugmassage, massagefauteuil, relax-time",
 };

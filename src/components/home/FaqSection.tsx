@@ -12,7 +12,7 @@ export default function FaqSection() {
     {
       question: "Hoe lang is de levertijd van massagestoelen?",
       answer:
-        "De levertijd van onze massagestoelen is doorgaans 3-5 werkdagen voor producten die op voorraad zijn. Bij bestelling informeren wij u over de exacte levertijd. Voor grotere modellen bieden wij gratis bezorging en installatie aan.",
+        "De levertijd van onze massagestoelen is doorgaans 1-2 werkdagen voor producten die op voorraad zijn. Bij bestelling informeren wij u over de exacte levertijd. Voor grotere modellen bieden wij gratis bezorging en installatie aan.",
     },
     {
       question: "Wat is de garantieperiode op jullie massagestoelen?",

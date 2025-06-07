@@ -1,44 +1,42 @@
-import { PrismaClient } from "@prisma/client";
+import { prisma } from "@/lib/prisma";
 import Link from "next/link";
-import slugify from "slugify";
-
-const prisma = new PrismaClient();
 
 export default async function BlogOverviewPage() {
   const posts = await prisma.post.findMany({
-    orderBy: {
-      createdAt: "desc",
-    },
+    orderBy: { createdAt: "desc" },
+  });
+
+  // Formatter buiten de map voor performance
+  const formatter = new Intl.DateTimeFormat("nl-NL", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
   });
 
   return (
-    <section className="w-full bg-white py-16">
-      <div className="container mx-auto px-4">
-        <div className="mb-12 text-center">
-          <h1 className="text-4xl font-bold text-[#0a1e3b] mb-4">Ons Blog</h1>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Lees onze nieuwste artikelen over massagestoelen, ontspanning en gezondheid.
-          </p>
-        </div>
+    <main className="max-w-7xl mx-auto py-10 px-4">
+      <h1 className="text-4xl font-bold mb-12 text-[#0a1e3b] text-center">Blog artikelen</h1>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {posts.map((post) => (
-            <Link
-              key={post.id}
-              href={`/blog/${post.slug}`}
-              className="block rounded-xl border border-gray-200 hover:shadow-md transition-shadow bg-white"
-            >
-              <div className="p-6">
-                <h2 className="text-xl font-semibold text-[#0a1e3b]">{post.title}</h2>
-                <p className="text-gray-600 mt-2 line-clamp-3">{post.description}</p>
-                <p className="mt-4 text-sm text-gray-400">
-                  Gepubliceerd op {new Date(post.createdAt).toLocaleDateString("nl-NL")}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {posts.map((post) => (
+          <Link key={post.id} href={`/blog/${post.slug}`} className="group">
+            <div className="border border-border rounded-lg p-6 h-full flex flex-col justify-between shadow-sm hover:shadow-lg transition-shadow duration-300 bg-white">
+              <div>
+                <h2 className="text-2xl font-semibold text-[#0a1e3b] mb-3 group-hover:underline">
+                  {post.title}
+                </h2>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Geplaatst op: {formatter.format(new Date(post.createdAt))}
                 </p>
+                <p className="text-black line-clamp-4">{post.description}</p>
               </div>
-            </Link>
-          ))}
-        </div>
+              <div className="mt-6">
+                <span className="text-[#0a1e3b] font-semibold">Lees verder →</span>
+              </div>
+            </div>
+          </Link>
+        ))}
       </div>
-    </section>
+    </main>
   );
 }

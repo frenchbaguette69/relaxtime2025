@@ -222,9 +222,9 @@ export default function ContactView() {
                   <address className="text-gray-700 not-italic">
                     <strong>Relax-time</strong>
                     <br />
-                    Abdissenlaan 15
+                    Boschstraat 18
                     <br />
-                    6374 BJ Landgraaf
+                    6442 PB Brunssum
                     <br />
                     Nederland
                   </address>

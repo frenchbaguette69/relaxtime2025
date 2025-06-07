@@ -271,7 +271,7 @@ export default function CheckoutForm() {
                     <FormItem className="sm:col-span-2">
                       <FormLabel>Land</FormLabel>
                       <FormControl>
-                        <Input placeholder="Nederland" {...field} />
+                        <Input placeholder="Nederland of België" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>

@@ -40,7 +40,7 @@ export default function ContactSection() {
                 {[
                   "Persoonlijk advies op maat",
                   "2 jaar garantie op alle stoelen",
-                  "Gratis bezorging in Nederland",
+                  "Gratis bezorging in Nederland en België",
                   "14 dagen niet-goed-geld-terug garantie",
                 ].map((usp, index) => (
                   <li key={index} className="flex items-center">
