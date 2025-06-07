@@ -11,7 +11,12 @@ export async function POST() {
 
     const prompt = `Je bent een professionele SEO-copywriter gespecialiseerd in massagestoelen, wellness en ontspanning.
 
-Schrijf een SEO-geoptimaliseerde blogpost voor de website https://relax-time.nl.
+Je taak is om een volledig kant-en-klare SEO-geoptimaliseerde blogpost te schrijven voor de website https://relax-time.nl.
+
+BELANGRIJK:
+- Begin DIRECT met de HTML output, zonder enige inleiding, uitleg of tekst.
+- Schrijf uitsluitend geldige HTML, beginnend vanaf <h1>. Voeg GEEN extra tekst of uitleg toe.
+- Geef GEEN titels als "Hier is de blog post" of iets dergelijks.
 
 Gebruik het volgende keyword als hoofdonderwerp: "${randomKeyword}".
 
@@ -38,7 +43,7 @@ SEO-eisen:
 - Houd de tekst natuurlijk leesbaar; voorkom keyword-stuffing.
 
 Lengte:
-- Minimaal 1000 woorden.
+- Minimaal 1500 woorden.
 
 Commerciële toevoegingen:
 - Noem relax-time.nl meerdere keren als dé specialist in massagestoelen en wellnessproducten.
@@ -48,13 +53,14 @@ Afsluiting:
 - Vat de belangrijkste punten samen.
 - Voeg een duidelijke call-to-action toe: "Bekijk ons assortiment of vraag vrijblijvend advies aan via relax-time.nl."
 
-Belangrijk:
+BELANGRIJK:
 - Voeg onderaan de blog deze HTML-tags toe:
 
 <metaTitle>Hier de meta title</metaTitle>
 <metaDescription>Hier de meta description</metaDescription>
 
-Geef géén uitleg erbij. Alleen geldige HTML en de meta title en meta description zoals hierboven omschreven.`;
+Nogmaals: geef uitsluitend pure geldige HTML output. Geen tekst erboven, geen uitleg, geen afsluiting, geen titels als "Hier is de blog post". Alleen de blog content in HTML.
+`;
 
     const response = await client.chat.completions.create({
       model: "llama3-70b-8192",
