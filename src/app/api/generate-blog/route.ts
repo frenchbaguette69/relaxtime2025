@@ -6,13 +6,9 @@ import slugify from "slugify";
 
 export async function POST() {
   try {
-    // 1️⃣ Random keyword kiezen
     const randomKeyword = keywords[Math.floor(Math.random() * keywords.length)] ?? "massagestoel kopen";
-
-    // 2️⃣ Groq AI client initialiseren
     const client = createGroqClient();
 
-    // 3️⃣ Prompt opstellen
     const prompt = `Je bent een professionele SEO-copywriter gespecialiseerd in massagestoelen, wellness en ontspanning.
 
 Schrijf een SEO-geoptimaliseerde blogpost voor de website https://relax-time.nl.
@@ -42,7 +38,7 @@ SEO-eisen:
 - Houd de tekst natuurlijk leesbaar; voorkom keyword-stuffing.
 
 Lengte:
-- Minimaal 1500 woorden.
+- Minimaal 1000 woorden.
 
 Commerciële toevoegingen:
 - Noem relax-time.nl meerdere keren als dé specialist in massagestoelen en wellnessproducten.
@@ -60,32 +56,25 @@ Belangrijk:
 
 Geef géén uitleg erbij. Alleen geldige HTML en de meta title en meta description zoals hierboven omschreven.`;
 
-    // 4️⃣ Call naar Llama3 AI model via Groq
     const response = await client.chat.completions.create({
       model: "llama3-70b-8192",
       messages: [{ role: "user", content: prompt }],
     });
 
     const fullText = response.choices[0]?.message?.content?.trim() || "";
-
-    // 5️⃣ Meta data extraheren
     const metaTitleMatch = fullText.match(/<metaTitle>(.*?)<\/metaTitle>/s);
     const metaDescriptionMatch = fullText.match(/<metaDescription>(.*?)<\/metaDescription>/s);
     const metaTitle = metaTitleMatch?.[1]?.trim() || "";
     const metaDescription = metaDescriptionMatch?.[1]?.trim() || "";
     const blogHtml = fullText.split("<metaTitle>")[0]?.trim() || "";
 
-    // 6️⃣ Slug genereren
     const slug = slugify(randomKeyword, { lower: true, strict: true });
-
-    // 7️⃣ Description genereren uit de content (eerste 200 karakters zonder HTML tags)
     const strippedContent = blogHtml.replace(/<[^>]+>/g, '');
     const description = strippedContent.substring(0, 200);
 
-    // 8️⃣ createdById (hier kun je dynamische logic maken met user sessions)
-    const createdById = "system-user-id"; // <-- hier je eigen user ID invullen
+    // <<< BELANGRIJK: hier moet jouw bestaande User ID komen
+    const createdById = "HIER_JOUW_USER_ID_INVOEREN";
 
-    // 9️⃣ Prisma create call
     await prisma.post.create({
       data: {
         title: randomKeyword,
