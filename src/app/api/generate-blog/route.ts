@@ -72,8 +72,7 @@ Geef géén uitleg erbij. Alleen geldige HTML en de meta title en meta descripti
     const strippedContent = blogHtml.replace(/<[^>]+>/g, '');
     const description = strippedContent.substring(0, 200);
 
-    // <<< BELANGRIJK: hier moet jouw bestaande User ID komen
-    const createdById = "HIER_JOUW_USER_ID_INVOEREN";
+    const createdById = "cmb2xhe800000jxcn0404uuga"; // jouw admin user ID
 
     await prisma.post.create({
       data: {
