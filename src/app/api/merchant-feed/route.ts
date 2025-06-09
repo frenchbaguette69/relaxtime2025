@@ -19,7 +19,7 @@ export async function GET() {
         <g:id>${product.id}</g:id>
         <g:title><![CDATA[${product.title}]]></g:title>
         <g:description><![CDATA[${product.summary ?? product.shortDescription}]]></g:description>
-        <g:link>https://relax-time.nl/product/${product.slug}</g:link>
+        <g:link>https://relax-time.nl/producten/${product.slug}</g:link>
         <g:image_link>${image}</g:image_link>
         <g:price>${priceEuro} EUR</g:price>
         ${offerEuro ? `<g:sale_price>${offerEuro} EUR</g:sale_price>` : ""}

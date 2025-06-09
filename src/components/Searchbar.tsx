@@ -85,7 +85,7 @@ export function SearchBar({ onProductClick }: SearchBarProps) {
           isLoading={loading}
           query={debounced}
           onSelect={(slug) => {
-            router.push(`/product/${slug}`);
+            router.push(`/producten/${slug}`);
             clear();
           }}
         />
