@@ -9,7 +9,18 @@ export async function GET() {
   });
 
   const feedItems = products.map(product => {
-    const image = product.images?.[0] ?? "https://relax-time.nl/default-product-image.jpg"; // fallback image
+    const images = product.images || [];
+
+    // Hoofdafbeelding
+    const mainImage = images[0]
+      ? `https://relax-time.nl${images[0]}`
+      : "https://relax-time.nl/default-product-image.jpg";
+
+    // Extra afbeeldingen
+    const additionalImages = images.slice(1, 10).map(img => `
+      <g:additional_image_link>https://relax-time.nl${img}</g:additional_image_link>
+    `).join("");
+
     const priceEuro = (product.price / 100).toFixed(2);
     const offerEuro = product.offerPrice ? (product.offerPrice / 100).toFixed(2) : null;
     const availability = product.quantity > 0 ? "in stock" : "out of stock";
@@ -20,7 +31,8 @@ export async function GET() {
         <g:title><![CDATA[${product.title}]]></g:title>
         <g:description><![CDATA[${product.summary ?? product.shortDescription}]]></g:description>
         <g:link>https://relax-time.nl/producten/${product.slug}</g:link>
-        <g:image_link>${image}</g:image_link>
+        <g:image_link>${mainImage}</g:image_link>
+        ${additionalImages}
         <g:price>${priceEuro} EUR</g:price>
         ${offerEuro ? `<g:sale_price>${offerEuro} EUR</g:sale_price>` : ""}
         <g:availability>${availability}</g:availability>
