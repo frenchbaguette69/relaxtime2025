@@ -78,16 +78,19 @@ const OrderSuccessPage = () => {
           <>
             {/* Conversie event naar Google Tag Manager */}
             <Script id="gtm-purchase-event" strategy="afterInteractive">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                window.dataLayer.push({
-                  event: 'purchase',
-                  transaction_id: '${order.id}',
-                  value: ${(order.total / 100).toFixed(2)},
-                  currency: 'EUR'
-                });
-              `}
-            </Script>
+  {`
+    window.dataLayer = window.dataLayer || [];
+    window.addEventListener('DOMContentLoaded', function () {
+      window.dataLayer.push({
+        event: 'purchase',
+        transaction_id: '${order.id}',
+        value: ${(order.total / 100).toFixed(2)},
+        currency: 'EUR'
+      });
+    });
+  `}
+</Script>
+
 
             <div className="mb-8 rounded-lg bg-blue-50 p-6">
               <h2 className="mb-4 text-xl font-medium text-blue-900">Bestellingsdetails</h2>
