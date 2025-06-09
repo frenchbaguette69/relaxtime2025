@@ -107,9 +107,9 @@ export default function ContactView() {
                     title="Bezoekadres"
                     content={
                       <>
-                        Abdissenlaan 15
+                        Boschstraat 18
                         <br />
-                        6374 BJ Landgraaf
+                        6442 PB Brunssum
                       </>
                     }
                   />
