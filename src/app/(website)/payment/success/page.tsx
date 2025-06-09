@@ -1,4 +1,3 @@
-// app/bestelling/succes/page.tsx
 "use client";
 
 import { Suspense, useEffect, useState } from "react";
@@ -8,7 +7,7 @@ import { CheckCircle, ShoppingBag, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { useCart } from "@/context/CartContext";
 import { Button } from "@/components/ui/button";
-import Script from "next/script"; // 👈 hier bijgekomen
+import Script from "next/script";
 
 interface OrderDetails {
   id: string;
@@ -16,7 +15,7 @@ interface OrderDetails {
   customerEmail: string;
   status: string;
   createdAt: string;
-  total: number; // 👈 totaalbedrag in centen
+  total: number;
 }
 
 const OrderSuccessPage = () => {
@@ -30,7 +29,6 @@ const OrderSuccessPage = () => {
     clearCart();
 
     const orderId = searchParams.get("order_id");
-
     if (!orderId) {
       toast.error("Bestelling niet gevonden");
       router.push("/");
@@ -58,9 +56,7 @@ const OrderSuccessPage = () => {
     return (
       <div className="flex min-h-[50vh] flex-col items-center justify-center">
         <Loader2 className="mb-4 h-12 w-12 animate-spin text-blue-900" />
-        <h1 className="text-2xl font-semibold text-blue-900">
-          Bestellingsgegevens laden...
-        </h1>
+        <h1 className="text-2xl font-semibold text-blue-900">Bestellingsgegevens laden...</h1>
       </div>
     );
   }
@@ -70,9 +66,7 @@ const OrderSuccessPage = () => {
       <div className="rounded-lg border border-gray-200 p-8 shadow-sm">
         <div className="mb-6 flex flex-col items-center justify-center">
           <CheckCircle className="mb-4 h-16 w-16 text-green-500" />
-          <h1 className="text-center text-3xl font-semibold text-blue-900">
-            Bedankt voor uw bestelling!
-          </h1>
+          <h1 className="text-center text-3xl font-semibold text-blue-900">Bedankt voor uw bestelling!</h1>
           {order && (
             <p className="mt-2 text-center text-gray-600">
               Bestelnummer: <span className="font-medium">{order.id}</span>
@@ -96,9 +90,7 @@ const OrderSuccessPage = () => {
             </Script>
 
             <div className="mb-8 rounded-lg bg-blue-50 p-6">
-              <h2 className="mb-4 text-xl font-medium text-blue-900">
-                Bestellingsdetails
-              </h2>
+              <h2 className="mb-4 text-xl font-medium text-blue-900">Bestellingsdetails</h2>
               <div className="space-y-2">
                 <p><span className="font-medium">Naam:</span> {order.customerName}</p>
                 <p><span className="font-medium">E-mail:</span> {order.customerEmail}</p>
