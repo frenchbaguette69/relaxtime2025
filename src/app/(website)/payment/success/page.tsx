@@ -8,6 +8,7 @@ import { CheckCircle, ShoppingBag, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { useCart } from "@/context/CartContext";
 import { Button } from "@/components/ui/button";
+import Script from "next/script"; // 👈 hier bijgekomen
 
 interface OrderDetails {
   id: string;
@@ -15,6 +16,7 @@ interface OrderDetails {
   customerEmail: string;
   status: string;
   createdAt: string;
+  total: number; // 👈 totaalbedrag in centen
 }
 
 const OrderSuccessPage = () => {
@@ -25,7 +27,6 @@ const OrderSuccessPage = () => {
   const { clearCart } = useCart();
 
   useEffect(() => {
-    // Clear the cart on order success
     clearCart();
 
     const orderId = searchParams.get("order_id");
@@ -36,15 +37,10 @@ const OrderSuccessPage = () => {
       return;
     }
 
-    // Fetch order details
     const fetchOrder = async () => {
       try {
         const response = await fetch(`/api/orders/${orderId}`);
-
-        if (!response.ok) {
-          throw new Error("Bestelling niet gevonden");
-        }
-
+        if (!response.ok) throw new Error("Bestelling niet gevonden");
         const data = await response.json();
         setOrder(data.order);
       } catch (error) {
@@ -85,40 +81,38 @@ const OrderSuccessPage = () => {
         </div>
 
         {order && (
-          <div className="mb-8 rounded-lg bg-blue-50 p-6">
-            <h2 className="mb-4 text-xl font-medium text-blue-900">
-              Bestellingsdetails
-            </h2>
-            <div className="space-y-2">
-              <p>
-                <span className="font-medium">Naam:</span> {order.customerName}
-              </p>
-              <p>
-                <span className="font-medium">E-mail:</span>{" "}
-                {order.customerEmail}
-              </p>
-              <p>
-                <span className="font-medium">Datum:</span>{" "}
-                {new Date(order.createdAt).toLocaleDateString("nl-NL", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}
-              </p>
-              <p>
-                <span className="font-medium">Status:</span>{" "}
-                <span className="rounded-full bg-green-100 px-2 py-1 text-sm font-medium text-green-800">
-                  {order.status === "PAID" ? "Betaald" : "Verwerkt"}
-                </span>
-              </p>
+          <>
+            {/* Conversie event naar Google Tag Manager */}
+            <Script id="gtm-purchase-event" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({
+                  event: 'purchase',
+                  transaction_id: '${order.id}',
+                  value: ${(order.total / 100).toFixed(2)},
+                  currency: 'EUR'
+                });
+              `}
+            </Script>
+
+            <div className="mb-8 rounded-lg bg-blue-50 p-6">
+              <h2 className="mb-4 text-xl font-medium text-blue-900">
+                Bestellingsdetails
+              </h2>
+              <div className="space-y-2">
+                <p><span className="font-medium">Naam:</span> {order.customerName}</p>
+                <p><span className="font-medium">E-mail:</span> {order.customerEmail}</p>
+                <p><span className="font-medium">Datum:</span> {new Date(order.createdAt).toLocaleDateString("nl-NL", { year: "numeric", month: "long", day: "numeric" })}</p>
+                <p><span className="font-medium">Status:</span> <span className="rounded-full bg-green-100 px-2 py-1 text-sm font-medium text-green-800">{order.status === "PAID" ? "Betaald" : "Verwerkt"}</span></p>
+                <p><span className="font-medium">Totaal:</span> €{(order.total / 100).toFixed(2)}</p>
+              </div>
             </div>
-          </div>
+          </>
         )}
 
         <div className="text-center">
           <p className="mb-6 text-gray-600">
-            We hebben een bevestiging van uw bestelling naar uw e-mailadres
-            gestuurd. U ontvangt een update wanneer uw bestelling verzonden is.
+            We hebben een bevestiging van uw bestelling naar uw e-mailadres gestuurd.
           </p>
           <Link href="/" passHref>
             <Button className="bg-blue-900 hover:bg-blue-800">
@@ -134,9 +128,7 @@ const OrderSuccessPage = () => {
 
 export default function OrderSuccessPageWrapper() {
   return (
-    <Suspense
-      fallback={<Loader2 className="h-12 w-12 animate-spin text-blue-900" />}
-    >
+    <Suspense fallback={<Loader2 className="h-12 w-12 animate-spin text-blue-900" />}>
       <OrderSuccessPage />
     </Suspense>
   );
