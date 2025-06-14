@@ -50,20 +50,33 @@ export default function ContactForm({
     },
   });
 
-  async function onSubmit(values: z.infer<typeof formSchema>) {
-    setIsSubmitting(true);
+ async function onSubmit(values: z.infer<typeof formSchema>) {
+  setIsSubmitting(true);
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+  try {
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(values),
+    });
 
-    console.log(values);
-    setIsSubmitting(false);
+    if (!response.ok) {
+      throw new Error("Er ging iets mis bij het verzenden van het formulier");
+    }
+
     setIsSuccess(true);
     form.reset();
-
-    // Reset success message after 5 seconds
     setTimeout(() => setIsSuccess(false), 5000);
+  } catch (error) {
+    console.error("Verzendfout:", error);
+    // Hier kun je eventueel nog een foutmelding tonen aan de gebruiker
   }
+
+  setIsSubmitting(false);
+}
+
 
   return (
     <div className={className}>
