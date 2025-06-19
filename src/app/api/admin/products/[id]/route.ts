@@ -112,6 +112,12 @@ export async function DELETE(
   { params }: { params: { id: string } },
 ) {
   try {
+    // Eerst koppelingen met categorieën verwijderen
+    await prisma.categoryOnProduct.deleteMany({
+      where: { productId: params.id },
+    });
+
+    // Daarna het product zelf verwijderen
     await prisma.product.delete({
       where: { id: params.id },
     });
@@ -125,3 +131,4 @@ export async function DELETE(
     );
   }
 }
+

@@ -225,7 +225,7 @@ export default function ProductDetails({ product }: { product: FullProduct }) {
             </div>
             <div className="flex items-center">
               <ShieldCheck size={20} className="mr-3 text-blue-900" />
-              <span>2 jaar garantie</span>
+              <span> 5 jaar garantie op het mechanisme en 2 jaar op beweegbare onderdelen</span>
             </div>
           </div>
 
