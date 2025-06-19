@@ -6,22 +6,23 @@ export async function POST(req: Request) {
   const { firstName, lastName, email, phoneNumber, message } = data;
 
   const transporter = nodemailer.createTransport({
-    host: "127.0.0.1",
-    port: 25,
-    secure: false,
-    tls: {
-      rejectUnauthorized: false,
+    host: "smtp.strato.com",
+    port: 465,
+    secure: true, // TLS
+    auth: {
+      user: "contact@pafb.nl",
+      pass: process.env.SMTP_PASS!, // zie hieronder
     },
   });
 
   try {
     await transporter.sendMail({
-      from: `"${firstName} ${lastName}" <noreply@relax-time.nl.nl>`,
-      to: "marcowammes@outlook.com", // ← Zet hier je echte ontvangstadres
+      from: `"${firstName} ${lastName}" <contact@pafb.nl>`,
+      to: "marcowammes@outlook.com", // jouw eigen ontvangstadres
       replyTo: email,
       subject: "Nieuw bericht via contactformulier",
       html: `
-        <h2>Nieuw bericht via je website</h2>
+        <h2>Nieuw bericht via de website</h2>
         <p><strong>Naam:</strong> ${firstName} ${lastName}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Telefoonnummer:</strong> ${phoneNumber || "–"}</p>
