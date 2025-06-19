@@ -12,7 +12,8 @@ export default function ProductCard({ product }: { product: Product }) {
   const { addItem } = useCart();
 
   return (
-    <div className="group relative overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md transition-shadow duration-300 hover:shadow-lg">
+    <div className="group relative flex flex-col justify-between overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md transition-shadow duration-300 hover:shadow-lg">
+
       {/* Clickable link over hele kaart */}
       <Link
         href={`/producten/${slug}`}
@@ -69,7 +70,7 @@ export default function ProductCard({ product }: { product: Product }) {
         </div>
 
         {/* Mobile optimized button */}
-        <div className="flex">
+        <div className="flex justify-end items-end">
           <Button
             className="flex-1 bg-[#0a1e3b] hover:bg-[#0c2549] text-white pointer-events-auto text-xs sm:text-sm py-2 sm:py-3 px-3 sm:px-4 rounded-md"
             onClick={(e) => {
