@@ -31,7 +31,8 @@ export default function ProductCard({ product }: { product: Product }) {
         />
         {offerPrice && (
           <div className="absolute top-2 sm:top-4 left-2 sm:left-4 rounded-md bg-red-500 px-2 py-1 text-xs sm:text-sm font-medium text-white z-20">
-            <span className="hidden sm:inline"> </span>Bespaar €{(price - offerPrice / 100).toFixed(2)}
+            <span className="hidden sm:inline"> </span>Bespaar {formatPrice(price - offerPrice)}
+
           </div>
         )}
         
