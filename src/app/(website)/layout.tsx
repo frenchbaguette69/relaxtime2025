@@ -8,6 +8,7 @@ import Footer from "@/components/layout/Footer";
 import { CartProvider } from "@/context/CartContext";
 import CartSidebar from "@/components/shared/CartSidebar";
 import { Toaster } from "sonner";
+import WhatsappButton from "@/components/WhatsappButton";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -35,7 +36,7 @@ export default function RootLayout({
         <CartProvider>
           <Header />
           {children}
-          
+          <WhatsappButton />
           {/* Google Analytics */}
           <Script
             src="https://www.googletagmanager.com/gtag/js?id=G-CDERCYYDHY"
