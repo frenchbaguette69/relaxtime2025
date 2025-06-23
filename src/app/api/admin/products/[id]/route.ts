@@ -1,39 +1,9 @@
-// app/api/products/[id]/route.ts
 import { NextRequest, NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
+import fs from "fs/promises";
+import path from "path";
 
 const prisma = new PrismaClient();
-
-export async function GET(
-  req: NextRequest,
-  { params }: { params: { id: string } },
-) {
-  try {
-    const product = await prisma.product.findUnique({
-      where: { id: params.id },
-      include: {
-        specifications: true,
-        categories: {
-          include: {
-            category: true,
-          },
-        },
-      },
-    });
-
-    if (!product) {
-      return NextResponse.json({ error: "Product not found" }, { status: 404 });
-    }
-
-    return NextResponse.json(product);
-  } catch (error) {
-    console.error("[PRODUCT_GET]", error);
-    return NextResponse.json(
-      { error: "Internal server error" },
-      { status: 500 },
-    );
-  }
-}
 
 export async function PATCH(
   req: NextRequest,
@@ -42,7 +12,7 @@ export async function PATCH(
   try {
     const body = await req.json();
 
-    // Check if slug already exists for a different product
+    // Check op slug duplicaat
     if (body.slug) {
       const existingProduct = await prisma.product.findUnique({
         where: { slug: body.slug },
@@ -56,18 +26,43 @@ export async function PATCH(
       }
     }
 
-    // Update the product with transaction to handle related data
-    const product = await prisma.$transaction(async (tx) => {
-      // Delete existing specifications and categories
-      await tx.productSpec.deleteMany({
-        where: { productId: params.id },
-      });
+    // ✅ 1. Haal bestaande product op (incl. oude images)
+    const existingProduct = await prisma.product.findUnique({
+      where: { id: params.id },
+    });
 
-      await tx.categoryOnProduct.deleteMany({
-        where: { productId: params.id },
-      });
+    if (!existingProduct) {
+      return NextResponse.json({ error: "Product not found" }, { status: 404 });
+    }
 
-      // Update product with new data
+    const oldImages: string[] = existingProduct.images ?? [];
+    const newImages: string[] = body.images ?? [];
+
+    // ✅ 2. Bepaal welke images verwijderd moeten worden
+    const imagesToDelete = oldImages.filter(
+      (img) => !newImages.includes(img)
+    );
+
+    // ✅ 3. Verwijder oude bestanden van disk
+    await Promise.all(
+      imagesToDelete.map(async (imgPath) => {
+        const fullPath = path.join(process.cwd(), "public", imgPath);
+        try {
+          await fs.unlink(fullPath);
+          console.log("Deleted image:", fullPath);
+        } catch (err) {
+  const error = err as Error;
+  console.warn("Failed to delete image:", fullPath, error.message);
+}
+
+      })
+    );
+
+    // ✅ 4. Voer update uit in transaction
+    const updatedProduct = await prisma.$transaction(async (tx) => {
+      await tx.productSpec.deleteMany({ where: { productId: params.id } });
+      await tx.categoryOnProduct.deleteMany({ where: { productId: params.id } });
+
       return tx.product.update({
         where: { id: params.id },
         data: {
@@ -77,7 +72,7 @@ export async function PATCH(
           summary: body.summary,
           shortDescription: body.shortDescription,
           description: body.description,
-          images: body.images,
+          images: newImages,
           price: body.price,
           offerPrice: body.offerPrice,
           quantity: body.quantity,
@@ -97,28 +92,9 @@ export async function PATCH(
       });
     });
 
-    return NextResponse.json(product);
+    return NextResponse.json(updatedProduct);
   } catch (error) {
     console.error("[PRODUCT_PATCH]", error);
-    return NextResponse.json(
-      { error: "Internal server error" },
-      { status: 500 },
-    );
-  }
-}
-
-export async function DELETE(
-  req: NextRequest,
-  { params }: { params: { id: string } },
-) {
-  try {
-    await prisma.product.delete({
-      where: { id: params.id },
-    });
-
-    return NextResponse.json({ success: true });
-  } catch (error) {
-    console.error("[PRODUCT_DELETE]", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 },
