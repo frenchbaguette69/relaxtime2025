@@ -21,14 +21,14 @@ export default async function FeaturedProducts() {
     <section className="w-full bg-gray-50 py-16">
       <div className="container mx-auto px-4">
         <div className="md:text-left text-center mb-10">
-          <h2 className="text-4xl font-bold text-[#0a1e3b]">Bestsellers</h2>
+          <h2 className="text-4xl font-bold text-[#0a1e3b]">Best verkochte massagestoelen</h2>
           <p className="text-gray-600 mt-2 max-w-xl">
             Onze meest populaire massagestoelen, geliefd om hun kwaliteit, comfort
             en therapeutische voordelen.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {featuredProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}

@@ -253,8 +253,8 @@ export default function OverOnsView() {
               <div className="grid gap-8 md:grid-cols-3">
                 <QualityCard
                   icon={<Shield className="h-6 w-6" />}
-                  title="2 Jaar Garantie"
-                  description="Wij staan achter de kwaliteit van onze producten en bieden daarom een uitgebreide garantie van 2 jaar."
+                  title="5 jaar garantie op het mechanisme en 2 jaar op beweegbare onderdelen"
+                  description="Wij staan achter de kwaliteit van onze producten en bieden daarom een uitgebreide garantie van  5 jaar garantie op het mechanisme en 2 jaar op beweegbare onderdelen."
                 />
                 <QualityCard
                   icon={<Truck className="h-6 w-6" />}

@@ -39,7 +39,7 @@ export default function ContactSection() {
               <ul className="space-y-3 text-sm text-gray-700">
                 {[
                   "Persoonlijk advies op maat",
-                  "2 jaar garantie op alle stoelen",
+                  " 5 jaar garantie op het mechanisme en 2 jaar op beweegbare onderdelen",
                   "Gratis bezorging in Nederland en België",
                   "14 dagen niet-goed-geld-terug garantie",
                 ].map((usp, index) => (

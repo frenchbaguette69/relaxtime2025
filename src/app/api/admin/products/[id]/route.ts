@@ -101,3 +101,29 @@ export async function PATCH(
     );
   }
 }
+
+export async function DELETE(
+  req: NextRequest,
+  { params }: { params: { id: string } },
+) {
+  try {
+    // Eerst koppelingen met categorieën verwijderen
+    await prisma.categoryOnProduct.deleteMany({
+      where: { productId: params.id },
+    });
+
+    // Daarna het product zelf verwijderen
+    await prisma.product.delete({
+      where: { id: params.id },
+    });
+
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    console.error("[PRODUCT_DELETE]", error);
+    return NextResponse.json(
+      { error: "Internal server error" },
+      { status: 500 },
+    );
+  }
+}
+

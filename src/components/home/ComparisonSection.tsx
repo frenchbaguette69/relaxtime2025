@@ -31,7 +31,7 @@ export default function ComparisonSection() {
         zero_g: "1 Positie",
         customMemory: false,
         intensity: "3 Niveaus",
-        warranty: "2 Jaar",
+        warranty: " 5 jaar garantie op het mechanisme en 2 jaar op beweegbare onderdelen",
       },
     },
     {
