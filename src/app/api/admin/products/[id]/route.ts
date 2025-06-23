@@ -12,7 +12,6 @@ export async function PATCH(
   try {
     const body = await req.json();
 
-    // Check op slug duplicaat
     if (body.slug) {
       const existingProduct = await prisma.product.findUnique({
         where: { slug: body.slug },
@@ -26,7 +25,6 @@ export async function PATCH(
       }
     }
 
-    // ✅ 1. Haal bestaande product op (incl. oude images)
     const existingProduct = await prisma.product.findUnique({
       where: { id: params.id },
     });
@@ -36,14 +34,23 @@ export async function PATCH(
     }
 
     const oldImages: string[] = existingProduct.images ?? [];
-    const newImages: string[] = body.images ?? [];
+    const newImagesRaw: string[] = body.images ?? [];
 
-    // ✅ 2. Bepaal welke images verwijderd moeten worden
-    const imagesToDelete = oldImages.filter(
-      (img) => !newImages.includes(img)
-    );
+    // ✅ Filter nieuwe afbeeldingen op basis van bestandsbestaan
+    const newImages: string[] = [];
 
-    // ✅ 3. Verwijder oude bestanden van disk
+    for (const img of newImagesRaw) {
+      const fullPath = path.join(process.cwd(), "public", img);
+      try {
+        await fs.access(fullPath);
+        newImages.push(img);
+      } catch {
+        console.warn("Image not found on disk (skipped):", fullPath);
+      }
+    }
+
+    const imagesToDelete = oldImages.filter((img) => !newImages.includes(img));
+
     await Promise.all(
       imagesToDelete.map(async (imgPath) => {
         const fullPath = path.join(process.cwd(), "public", imgPath);
@@ -51,14 +58,12 @@ export async function PATCH(
           await fs.unlink(fullPath);
           console.log("Deleted image:", fullPath);
         } catch (err) {
-  const error = err as Error;
-  console.warn("Failed to delete image:", fullPath, error.message);
-}
-
-      })
+          const error = err as Error;
+          console.warn("Failed to delete image:", fullPath, error.message);
+        }
+      }),
     );
 
-    // ✅ 4. Voer update uit in transaction
     const updatedProduct = await prisma.$transaction(async (tx) => {
       await tx.productSpec.deleteMany({ where: { productId: params.id } });
       await tx.categoryOnProduct.deleteMany({ where: { productId: params.id } });
@@ -107,12 +112,37 @@ export async function DELETE(
   { params }: { params: { id: string } },
 ) {
   try {
-    // Eerst koppelingen met categorieën verwijderen
+    const product = await prisma.product.findUnique({
+      where: { id: params.id },
+    });
+
+    if (!product) {
+      return NextResponse.json({ error: "Product not found" }, { status: 404 });
+    }
+
+    // ✅ Verwijder gekoppelde afbeeldingen van disk
+    const images = product.images ?? [];
+    await Promise.all(
+      images.map(async (imgPath) => {
+        const fullPath = path.join(process.cwd(), "public", imgPath);
+        try {
+          await fs.unlink(fullPath);
+          console.log("Deleted image:", fullPath);
+        } catch (err) {
+          const error = err as Error;
+          console.warn("Failed to delete image:", fullPath, error.message);
+        }
+      }),
+    );
+
     await prisma.categoryOnProduct.deleteMany({
       where: { productId: params.id },
     });
 
-    // Daarna het product zelf verwijderen
+    await prisma.productSpec.deleteMany({
+      where: { productId: params.id },
+    });
+
     await prisma.product.delete({
       where: { id: params.id },
     });
@@ -126,4 +156,3 @@ export async function DELETE(
     );
   }
 }
-
