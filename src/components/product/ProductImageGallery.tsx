@@ -36,13 +36,17 @@ export default function ProductImageGallery({
       {/* Main image */}
       <div className="relative mb-4 h-[400px] overflow-hidden rounded-lg bg-gray-100">
         <Image
-          src={`${process.env.NEXT_PUBLIC_SITE_URL}/${imageList[activeIndex]}`}
-          alt={`${title} - afbeelding ${activeIndex + 1}`}
-          fill
-          style={{ objectFit: "contain" }}
-          className="cursor-zoom-in"
-          onClick={() => setZoomIndex(activeIndex)}
-        />
+  src={`${process.env.NEXT_PUBLIC_SITE_URL}/${imageList[activeIndex]}`}
+  alt={`${title} - afbeelding ${activeIndex + 1}`}
+  fill
+  style={{ objectFit: "contain" }}
+  className="cursor-zoom-in"
+  onClick={() => setZoomIndex(activeIndex)}
+  onError={(e) => {
+    e.currentTarget.style.display = "none";
+  }}
+/>
+
 
         {imageList.length > 1 && (
           <>
@@ -84,11 +88,15 @@ export default function ProductImageGallery({
               onClick={() => setActiveIndex(idx)}
             >
               <Image
-                src={`${process.env.NEXT_PUBLIC_SITE_URL}/${image}`}
-                alt={`${title} - thumbnail ${idx + 1}`}
-                fill
-                style={{ objectFit: "cover" }}
-              />
+  src={`${process.env.NEXT_PUBLIC_SITE_URL}/${image}`}
+  alt={`${title} - thumbnail ${idx + 1}`}
+  fill
+  style={{ objectFit: "cover" }}
+  onError={(e) => {
+    e.currentTarget.style.display = "none";
+  }}
+/>
+
             </button>
           ))}
         </div>
