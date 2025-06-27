@@ -6,6 +6,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import Script from "next/script";
 
 export default function FaqSection() {
   const faqs = [
@@ -36,6 +37,23 @@ export default function FaqSection() {
     },
   ];
 
+  <Script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: faq.answer,
+        },
+      })),
+    }),
+  }}
+/>
   return (
     <section id="faq" className="w-full bg-white py-20">
       <div className="container mx-auto px-4">

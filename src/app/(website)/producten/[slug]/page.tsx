@@ -38,5 +38,49 @@ export default async function ProductPage({ params }: ProductPageProps) {
     notFound();
   }
 
-  return <ProductDetails product={product} />;
+  const averageRating = product.reviews.length
+    ? product.reviews.reduce((sum, review) => sum + review.rating, 0) /
+      product.reviews.length
+    : undefined;
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Product",
+            name: product.title,
+            image: product.images,
+            description: product.shortDescription,
+            sku: product.model,
+            brand: {
+              "@type": "Brand",
+              name: "Relax-Time.nl",
+            },
+            offers: {
+              "@type": "Offer",
+              url: `https://relax-time.nl/producten/${product.slug}`,
+              priceCurrency: "EUR",
+              price: (product.offerPrice ?? product.price).toFixed(2),
+              availability:
+                product.quantity > 0
+                  ? "https://schema.org/InStock"
+                  : "https://schema.org/OutOfStock",
+            },
+            ...(averageRating && {
+              aggregateRating: {
+                "@type": "AggregateRating",
+                ratingValue: averageRating.toFixed(1),
+                reviewCount: product.reviews.length,
+              },
+            }),
+          }),
+        }}
+      />
+      <ProductDetails product={product} />
+    </>
+  );
 }
+

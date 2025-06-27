@@ -28,49 +28,54 @@ const features = [
 
 export default function AboutChair() {
   return (
-    <section className="bg-white py-16">
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 px-4 items-center">
-        {/* Tekstgedeelte */}
-        <div>
-          <h2 className="text-3xl md:text-4xl font-bold text-[#0a1e3b] mb-4">
-            Waarom Kiezen voor een Massagestoel?
-          </h2>
-          <p className="text-gray-600 mb-6 max-w-xl">
-            Een massagestoel is meer dan een luxe – het is een investering in uw
-            gezondheid en welzijn. Ontdek de vele voordelen die onze massagestoelen bieden.
-          </p>
+   <section className="bg-white py-16" aria-labelledby="about-massagechairs-heading">
+  <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 px-4 items-center">
+    {/* Tekstgedeelte */}
+    <div>
+      <h2
+        id="about-massagechairs-heading"
+        className="text-3xl md:text-4xl font-bold text-[#0a1e3b] mb-4"
+      >
+        Massagestoel Kopen? Ontdek de Gezondheidsvoordelen
+      </h2>
+      <p className="text-gray-600 mb-6 max-w-xl">
+        Een massagestoel is meer dan een luxe – het is een investering in uw
+        gezondheid en welzijn. Ontdek de voordelen die onze premium modellen bieden.
+      </p>
 
-          <ul className="space-y-5 mb-6">
-            {features.map((feature, i) => (
-              <li key={i} className="flex items-start gap-4">
-                <div className="mt-1 text-[#0a1e3b] bg-gray-100 p-2 rounded-full">
-                  <FaCheckCircle className="h-5 w-5" />
-                </div>
-                <div>
-                  <p className="font-semibold text-[#0a1e3b]">{feature.title}</p>
-                  <p className="text-gray-600">{feature.description}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
-        <Link href="/producten">
-          <Button className="bg-[#0a1e3b] text-white hover:bg-[#122d5a] px-6 py-4">
-            Bekijk ons aanbod
-          </Button>
-          </Link>
-        </div>
+      <ul className="space-y-5 mb-6" role="list">
+        {features.map((feature, i) => (
+          <li key={i} className="flex items-start gap-4" role="listitem">
+            <div className="mt-1 text-[#0a1e3b] bg-gray-100 p-2 rounded-full">
+              <FaCheckCircle className="h-5 w-5" />
+            </div>
+            <div>
+              <p className="font-semibold text-[#0a1e3b]">{feature.title}</p>
+              <p className="text-gray-600">{feature.description}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
 
-        {/* Afbeelding */}
-        <div className="w-full h-full relative rounded-xl bg-gray-100 overflow-hidden">
-          <Image
-            src="/comfort.webp" // vervang met echte afbeelding
-            alt="Massagestoel voordelen"
-            fill
-            className="object-cover rounded-xl"
-            priority
-          />
-        </div>
-      </div>
-    </section>
+      <Link href="/producten">
+        <Button className="bg-[#0a1e3b] text-white hover:bg-[#122d5a] px-6 py-4">
+          Bekijk ons aanbod
+        </Button>
+      </Link>
+    </div>
+
+    {/* Afbeelding */}
+    <div className="relative h-full w-full overflow-hidden rounded-xl bg-gray-100">
+      <Image
+        src="/comfort.webp"
+        alt="Massagestoel gebruiken voor ontspanning en gezondheid"
+        fill
+        className="object-cover rounded-xl"
+        priority
+      />
+    </div>
+  </div>
+</section>
+
   );
 }

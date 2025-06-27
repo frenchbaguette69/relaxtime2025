@@ -31,52 +31,70 @@ export default function CategorySection() {
   if (!categories.length) return null;
 
   return (
-    <section className="w-full bg-white py-20 px-4">
-      <div className="md:text-left container mx-auto text-center mb-12">
-        <h2 className="text-4xl font-bold text-[#0a1e3b] mb-4">
-          Ontdek Onze Collecties Aan Massage Stoelen
-        </h2>
-        <p className="text-gray-600 max-w-2xl">
-          Van compacte massagestoelen tot luxe full-body modellen, wij hebben
-          voor elke ruimte en budget de perfecte oplossing.
-        </p>
-      </div>
+    <section
+  className="w-full bg-white py-20 px-4"
+  aria-labelledby="category-heading"
+>
+  <div className="container mx-auto mb-12 text-center md:text-left">
+    <h2
+      id="category-heading"
+      className="mb-4 text-4xl font-bold text-[#0a1e3b]"
+    >
+      Massagestoel Collecties voor Iedere Woonruimte & Budget
+    </h2>
+    <p className="max-w-2xl text-gray-600">
+      Van compacte massagestoelen tot luxe full-body modellen – ontdek onze
+      zorgvuldig geselecteerde categorieën om de perfecte{" "}
+      <strong>massagestoel</strong> te kopen.
+    </p>
+  </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 container mx-auto">
-        {categories.map((cat) => (
-          <Link
-            key={cat.id}
-            href={`/producten?category=${cat.id}`}
-            className="relative rounded-lg overflow-hidden group h-[280px] md:h-[320px]"
+  <div className="container mx-auto grid grid-cols-1 gap-6 md:grid-cols-3">
+    {categories.map((cat) => (
+      <article
+        key={cat.id}
+        className="relative group h-[280px] md:h-[320px] overflow-hidden rounded-lg"
+        role="listitem"
+        aria-label={`Categorie ${cat.name}`}
+      >
+        <Link
+          href={`/producten?category=${cat.id}`}
+          className="absolute inset-0 z-10"
+        >
+          <span className="sr-only">Bekijk {cat.name}</span>
+        </Link>
+
+        {/* Achtergrondfoto */}
+        {cat.cover ? (
+          <Image
+            src={cat.cover}
+            alt={`Massagestoel categorie: ${cat.name}`}
+            fill
+            className="object-cover transition-transform group-hover:scale-105"
+          />
+        ) : (
+          <div className="absolute inset-0 h-full w-full bg-gray-200" />
+        )}
+
+        {/* Overlay */}
+        <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/70 via-black/40 to-transparent px-6 py-6 text-white">
+          <h3 className="text-xl font-semibold">{cat.name}</h3>
+          {cat.description && (
+            <p className="mb-4 line-clamp-2 text-sm text-gray-200">
+              {cat.description}
+            </p>
+          )}
+          <Button
+            variant="ghost"
+            className="w-fit gap-2 px-0 font-semibold text-white hover:bg-transparent hover:underline"
           >
-            {/* Achtergrondfoto */}
-            {cat.cover ? (
-              <Image
-                src={cat.cover}
-                alt={cat.name}
-                fill
-                className="object-cover transition-transform group-hover:scale-105"
-              />
-            ) : (
-              <div className="bg-gray-200 h-full w-full absolute inset-0" />
-            )}
+            Bekijk Collectie <ArrowRight className="h-4 w-4" />
+          </Button>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
 
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent px-6 py-6 flex flex-col justify-end text-white">
-              <h3 className="text-xl font-semibold">{cat.name}</h3>
-              <p className="text-sm text-gray-200 line-clamp-2 mb-4">
-                {cat.description}
-              </p>
-              <Button
-                variant="ghost"
-                className="text-white px-0 font-semibold gap-2 hover:bg-transparent hover:underline w-fit"
-              >
-                Bekijk Collectie <ArrowRight className="w-4 h-4" />
-              </Button>
-            </div>
-          </Link>
-        ))}
-      </div>
-    </section>
   );
 }

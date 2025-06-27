@@ -18,22 +18,37 @@ export default async function FeaturedProducts() {
   });
 
   return (
-    <section className="w-full bg-gray-50 py-16">
-      <div className="container mx-auto px-4">
-        <div className="md:text-left text-center mb-10">
-          <h2 className="text-4xl font-bold text-[#0a1e3b]">Best verkochte massagestoelen</h2>
-          <p className="text-gray-600 mt-2 max-w-xl">
-            Onze meest populaire massagestoelen, geliefd om hun kwaliteit, comfort
-            en therapeutische voordelen.
-          </p>
-        </div>
+    <section
+  className="w-full bg-gray-50 py-16"
+  aria-labelledby="bestverkocht-heading"
+>
+  <div className="container mx-auto px-4">
+    <div className="mb-10 text-center md:text-left">
+      <h2
+        id="bestverkocht-heading"
+        className="text-4xl font-bold text-[#0a1e3b]"
+      >
+        Best Verkochte Massagestoelen
+      </h2>
+      <p className="mt-2 max-w-xl text-gray-600">
+        Deze massagestoelen worden het meest gekocht door onze klanten. Perfect
+        voor wie op zoek is naar{" "}
+        <strong>direct comfort en hoogwaardige ontspanning</strong>. Ontdek waarom
+        zij populair zijn bij mensen die een <strong>massagestoel kopen</strong>.
+      </p>
+    </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {featuredProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
-      </div>
-    </section>
+    <div
+      className="grid grid-cols-2 gap-6 sm:grid-cols-2 lg:grid-cols-4"
+      role="list"
+    >
+      {featuredProducts.map((product) => (
+        <article key={product.id} role="listitem">
+          <ProductCard product={product} />
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
   );
 }

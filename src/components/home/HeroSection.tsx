@@ -15,9 +15,9 @@ export default function HeroSection() {
             Nieuw Assortiment 2025
           </span>
           <h1 className="text-4xl font-extrabold leading-tight tracking-tight text-white md:text-5xl lg:text-6xl">
-            Ontdek Ultieme <br />
-            Ontspanning met Onze <br />
-            Premium Massagestoelen
+            Massagestoel Kopen? <br />
+            Ontdek de Perfecte Ontspanning <br />
+            bij Relax-Time.nl
           </h1>
           <p className="max-w-xl text-gray-300 text-lg">
             Ervaar de perfecte balans tussen luxe, comfort en therapeutische
