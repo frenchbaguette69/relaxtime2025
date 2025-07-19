@@ -27,7 +27,7 @@ export async function GET() {
   staticPages.forEach((path) => {
     sitemap += `
     <url>
-      <loc>https://relax-time.nl${path}</loc>
+      <loc>https://massagestoel-kopen.com${path}</loc>
       <changefreq>weekly</changefreq>
       <priority>0.7</priority>
     </url>\n`;
@@ -37,7 +37,7 @@ export async function GET() {
   productSlugs.forEach((product) => {
     sitemap += `
     <url>
-      <loc>https://relax-time.nl/producten/${product.slug}</loc>
+      <loc>https://massagestoel-kopen.com/producten/${product.slug}</loc>
       <changefreq>weekly</changefreq>
       <priority>0.8</priority>
     </url>\n`;
