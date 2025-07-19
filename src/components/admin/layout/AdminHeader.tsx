@@ -23,7 +23,7 @@ const AdminHeader = () => {
             <Link href="/" passHref>
               <Image
                 className="h-10 w-12 object-contain"
-                src={"/relax-logo.png"}
+                src={"/logo.png"}
                 alt="Massagestoel-kopen.com Logo"
                 height={100}
                 width={250}
