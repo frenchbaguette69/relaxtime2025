@@ -94,7 +94,7 @@ export default function TestimonialsSection() {
             Wat Onze Klanten Zeggen
           </h2>
           <p className="mx-auto max-w-2xl text-gray-600">
-            Ontdek waarom onze klanten kiezen voor Relax-Time massagestoelen
+            Ontdek waarom onze klanten kiezen voor Massagestoel-kopen.com massagestoelen
           </p>
         </div>
 

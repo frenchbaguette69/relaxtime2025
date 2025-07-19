@@ -92,7 +92,7 @@ export default function BenefitsSection() {
       <div className="container mx-auto px-4">
         <div className="mb-12 text-center">
           <h2 className="mb-4 text-3xl font-bold text-blue-900 md:text-4xl">
-            Waarom Kiezen voor Relax-Time?
+            Waarom Kiezen voor Massagestoel-kopen.com?
           </h2>
           <p className="mx-auto max-w-2xl text-gray-600">
             Wij bieden de beste kwaliteit massagestoelen met uitstekende service

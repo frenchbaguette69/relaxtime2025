@@ -10,7 +10,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 
   if (!post) {
     return {
-      title: "Blog niet gevonden | Relax Time",
+      title: "Blog niet gevonden | Massagestoel-kopen.com",
     };
   }
 

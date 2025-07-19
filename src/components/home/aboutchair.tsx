@@ -76,6 +76,5 @@ export default function AboutChair() {
     </div>
   </div>
 </section>
-
   );
 }

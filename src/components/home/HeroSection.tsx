@@ -17,7 +17,7 @@ export default function HeroSection() {
           <h1 className="text-4xl font-extrabold leading-tight tracking-tight text-white md:text-5xl lg:text-6xl">
             Massagestoel Kopen? <br />
             Ontdek de Perfecte Ontspanning <br />
-            bij Relax-Time.nl
+            bij Massagestoel-kopen.com
           </h1>
           <p className="max-w-xl text-gray-300 text-lg">
             Ervaar de perfecte balans tussen luxe, comfort en therapeutische

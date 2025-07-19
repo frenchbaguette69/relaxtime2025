@@ -35,7 +35,7 @@ export default function CustomerReviews() {
           Wat Onze Klanten Zeggen
         </h2>
         <p className="text-gray-600 mb-12 max-w-2xl mx-auto">
-          Ontdek waarom onze klanten zo tevreden zijn met hun Relax-Time massagestoel.
+          Ontdek waarom onze klanten zo tevreden zijn met hun Massagestoel-kopen.com massagestoel.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

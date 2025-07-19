@@ -9,28 +9,28 @@ import AboutChair from "@/components/home/aboutchair";
 import Cta from "@/components/home/cta";
 
 export const metadata = {
-  title: "Massagestoel Kopen? Ontdek Relax-Time.nl's Premium Collectie | Gratis Levering & Installatie",
-  description: "Koop uw massagestoel bij Relax-Time.nl. Ervaar ultieme ontspanning met onze premium modellen. Gratis bezorging, installatie & 5 jaar garantie. Betaal in termijnen!",
-  keywords: "massagestoelen, ontspanning, massage, rugmassage, massagefauteuil, relax-time, massagestoel kopen, zero gravity, SL-track, luxe massagestoel",
+  title: "Massagestoel Kopen? Ontdek Massagestoel-kopen.com Premium Collectie | Gratis Levering & Installatie",
+  description: "Koop uw massagestoel bij Massagestoel-kopen.com. Ervaar ultieme ontspanning met onze premium modellen. Gratis bezorging, installatie & 5 jaar garantie. Betaal in termijnen!",
+  keywords: "massagestoelen, ontspanning, massage, rugmassage, massagefauteuil, Massagestoel-kopen.com, massagestoel kopen, zero gravity, SL-track, luxe massagestoel",
   openGraph: {
-    title: "Relax-Time.nl | Premium Massagestoelen met Gratis Levering & 5 Jaar Garantie",
+    title: "Massagestoel-kopen.com | Premium Massagestoelen met Gratis Levering & 5 Jaar Garantie",
     description: "Bekijk onze collectie massagestoelen met Zero Gravity, SL-track en ingebouwde verwarming. Probeer 14 dagen risicoloos.",
-    url: "https://relax-time.nl",
+    url: "https://Massagestoel-kopen.com",
     type: "website",
     images: [
       {
-        url: "https://relax-time.nl/comfort.webp", // pas aan naar ideale OG image
+        url: "https://Massagestoel-kopen.com/comfort.webp", // pas aan naar ideale OG image
         width: 1200,
         height: 630,
-        alt: "Massagestoel kopen bij Relax-Time.nl",
+        alt: "Massagestoel kopen bij Massagestoel-kopen.com",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Massagestoel kopen? Ontdek de beste modellen bij Relax-Time.nl",
+    title: "Massagestoel kopen? Ontdek de beste modellen bij Massagestoel-kopen.com",
     description: "Ervaar ultieme ontspanning met onze luxe massagestoelen – gratis bezorging, installatie en 5 jaar garantie.",
-    images: ["https://relax-time.nl/comfort.webp"], // zelfde als OG image
+    images: ["https://Massagestoel-kopen.com/comfort.webp"], // zelfde als OG image
   },
 };
 
@@ -45,9 +45,9 @@ export default function Home() {
     __html: JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Organization",
-      name: "Relax-Time.nl",
-      url: "https://relax-time.nl",
-      logo: "https://relax-time.nl/logo.svg", // pas aan indien anders
+      name: "Massagestoel-kopen.com",
+      url: "https://Massagestoel-kopen.com",
+      logo: "https://Massagestoel-kopen.com/logo.svg", // pas aan indien anders
       sameAs: [
         "https://www.facebook.com/relax-time",
         "https://www.instagram.com/relax-time",
@@ -70,11 +70,11 @@ export default function Home() {
     __html: JSON.stringify({
       "@context": "https://schema.org",
       "@type": "WebSite",
-      name: "Relax-Time.nl",
-      url: "https://relax-time.nl",
+      name: "Massagestoel-kopen.com",
+      url: "https://Massagestoel-kopen.com",
       potentialAction: {
         "@type": "SearchAction",
-        target: "https://relax-time.nl/zoeken?q={search_term_string}",
+        target: "https://Massagestoel-kopen.com/zoeken?q={search_term_string}",
         "query-input": "required name=search_term_string",
       },
     }),

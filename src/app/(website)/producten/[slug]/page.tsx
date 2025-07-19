@@ -17,13 +17,13 @@ export async function generateMetadata({
 
   if (!product) {
     return {
-      title: "Product niet gevonden | Relax-time.nl",
+      title: "Product niet gevonden | Massagestoel-kopen.com",
       description: "Het gezochte product kon niet worden gevonden.",
     };
   }
 
   return {
-    title: `${product.title} | Relax-time.nl`,
+    title: `${product.title} | Massagestoel-kopen.com`,
     description: product.shortDescription,
     openGraph: {
       images: product.images.length > 0 ? [product.images[0]!] : [],
@@ -57,11 +57,11 @@ export default async function ProductPage({ params }: ProductPageProps) {
             sku: product.model,
             brand: {
               "@type": "Brand",
-              name: "Relax-Time.nl",
+              name: "Massagestoel-kopen.com",
             },
             offers: {
               "@type": "Offer",
-              url: `https://relax-time.nl/producten/${product.slug}`,
+              url: `https://Massagestoel-kopen.com/producten/${product.slug}`,
               priceCurrency: "EUR",
               price: (product.offerPrice ?? product.price).toFixed(2),
               availability:

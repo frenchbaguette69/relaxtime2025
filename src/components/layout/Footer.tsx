@@ -23,13 +23,13 @@ export default async function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* Bedrijfsinfo */}
           <div>
-            <h2 id="footer-heading" className="text-lg font-bold mb-4">Relax-Time.nl</h2>
+            <h2 id="footer-heading" className="text-lg font-bold mb-4">Massagestoel-kopen.com</h2>
             <p className="text-gray-300">
-              Relax-Time.nl is dé specialist in <strong>massagestoelen kopen</strong> voor thuis of kantoor. Ontdek ultieme ontspanning met onze hoogwaardige collectie.
+              Massagestoel-kopen.com is dé specialist in <strong>massagestoelen kopen</strong> voor thuis of kantoor. Ontdek ultieme ontspanning met onze hoogwaardige collectie.
             </p>
             <div className="flex items-center gap-4 mt-4 text-xl text-white">
               <a
-                href="https://facebook.com/relax-time"
+                href="https://facebook.com/Massagestoel-kopen.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Volg ons op Facebook"
@@ -37,7 +37,7 @@ export default async function Footer() {
                 <FaFacebookF className="hover:text-gray-300" />
               </a>
               <a
-                href="https://instagram.com/relax-time"
+                href="https://instagram.com/Massagestoel-kopen.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Volg ons op Instagram"
@@ -45,7 +45,7 @@ export default async function Footer() {
                 <FaInstagram className="hover:text-gray-300" />
               </a>
               <a
-                href="https://twitter.com/relax-time"
+                href="https://twitter.com/Massagestoel-kopen.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Volg ons op Twitter"
@@ -80,7 +80,7 @@ export default async function Footer() {
             <ul className="space-y-2 text-gray-300">
               <li>
                 <Link href="/over-ons" className="hover:text-white">
-                  Over Relax-Time.nl
+                  Over Massagestoel-kopen.com
                 </Link>
               </li>
               <li>
@@ -90,7 +90,7 @@ export default async function Footer() {
               </li>
               <li>
                 <Link href="/contact" className="hover:text-white">
-                  Contact met Relax-Time.nl
+                  Contact met Massagestoel-kopen.com
                 </Link>
               </li>
               <li>
@@ -106,7 +106,7 @@ export default async function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-gray-700 text-sm text-gray-400 py-6 px-6 text-center">
         <div className="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-          <p>© {new Date().getFullYear()} Relax-Time.nl. Alle rechten voorbehouden.</p>
+          <p>© {new Date().getFullYear()} Massagestoel-kopen.com. Alle rechten voorbehouden.</p>
           <p>Gratis levering & 5 jaar garantie op alle premium massagestoelen.</p>
         </div>
       </div>

@@ -40,7 +40,7 @@ async function main() {
         slug,
         description: "Ontdek hoe een massagestoel bijdraagt aan jouw welzijn, dagelijkse ontspanning en fysieke gezondheid.",
         content: "<h1> test </h1> ",
-        metaTitle: "Waarom een massagestoel jouw leven verandert | Relax-Time",
+        metaTitle: "Waarom een massagestoel jouw leven verandert | Massagestoel-kopen.com",
         metaDescription: "Lees hoe een massagestoel dagelijkse stress vermindert en bijdraagt aan herstel en ontspanning.",
         createdById: admin.id,
       },

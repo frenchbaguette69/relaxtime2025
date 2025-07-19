@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import CheckoutForm from "@/components/checkout/CheckoutForm";
 
 export const metadata: Metadata = {
-  title: "Afrekenen | Relax-Time",
+  title: "Afrekenen | Massagestoel-kopen.com",
   description: "Rond uw bestelling af en betaal veilig online.",
 };
 

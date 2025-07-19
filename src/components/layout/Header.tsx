@@ -21,7 +21,7 @@ export default function Header() {
         <Link href="/" className="flex items-center">
           <Image
             src="/logo.png"
-            alt="Relax-Time Logo"
+            alt="Massagestoel-kopen.com Logo"
             width={140}
             height={40}
             className="h-10 w-auto"

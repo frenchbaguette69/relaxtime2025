@@ -17,7 +17,7 @@ export default function Cta() {
             Klaar om een Massagestoel te Kopen en Ultiem te Ontspannen?
           </h2>
           <p className="text-lg text-gray-300 max-w-2xl">
-            Profiteer nu van onze speciale aanbiedingen en ervaar zelf het verschil van een premium massagestoel van Relax-Time.nl.
+            Profiteer nu van onze speciale aanbiedingen en ervaar zelf het verschil van een premium massagestoel van Massagestoel-kopen.com.
           </p>
         </div>
 

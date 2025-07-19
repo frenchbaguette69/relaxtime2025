@@ -220,7 +220,7 @@ export default function ContactView() {
                     Ons adres
                   </h3>
                   <address className="text-gray-700 not-italic">
-                    <strong>Relax-time</strong>
+                    <strong>Massagestoel-kopen.com</strong>
                     <br />
                     Boschstraat 18
                     <br />
@@ -256,7 +256,7 @@ export default function ContactView() {
                   className="h-full w-full border-0"
                   allowFullScreen
                   loading="lazy"
-                  title="Relax-time locatie"
+                  title="Massagestoel-kopen.com showroom locatie"
                   style={{ minHeight: "100%", display: "block" }}
                 ></iframe>
               </div>

@@ -40,7 +40,7 @@ export default function ContactSection() {
         {/* USP box */}
         <div className="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-md rounded-xl p-6 shadow-lg">
           <h3 className="text-lg font-semibold text-[#0a1e3b] mb-4">
-            Waarom Relax-Time?
+            Waarom Massagestoel-kopen.com?
           </h3>
           <ul className="space-y-3 text-sm text-gray-700">
             {[

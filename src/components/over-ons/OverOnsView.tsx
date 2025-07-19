@@ -39,7 +39,7 @@ export default function OverOnsView() {
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="mb-6 text-4xl font-bold text-blue-900 md:text-5xl">
-              Welkom bij Relax-time
+              Welkom bij Massagestoel-kopen.com
             </h1>
             <p className="mb-10 text-xl text-gray-700">
               Uw specialist in premium massagestoelen voor een betere kwaliteit
@@ -74,7 +74,7 @@ export default function OverOnsView() {
               <div className="relative aspect-video overflow-hidden rounded-xl shadow-xl">
                 <Image
                   src="https://images.unsplash.com/photo-1611769446317-3e7a467fb35e?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWFzc2FnZSUyMGNoYWlyfGVufDB8fDB8fHww"
-                  alt="Premium massagestoel van Relax-time"
+                  alt="Premium massagestoel van Massagestoel-kopen.com"
                   width={600}
                   height={400}
                   className="h-full w-full object-cover"
@@ -86,7 +86,7 @@ export default function OverOnsView() {
                 Ons Verhaal
               </h2>
               <p className="mb-6 text-gray-700">
-                Bij Relax-time geloven we dat ontspanning geen luxe is, maar een
+                Bij Massagestoel-kopen.com geloven we dat ontspanning geen luxe is, maar een
                 noodzaak in ons drukke leven. Onze passie voor welzijn en
                 innovatie heeft ons gebracht waar we nu zijn: een toonaangevende
                 specialist in hoogwaardige massagestoelen in Nederland.
@@ -113,7 +113,7 @@ export default function OverOnsView() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
             <h2 className="mb-4 text-3xl font-bold text-blue-900">
-              Ontdek Relax-time
+              Ontdek Massagestoel-kopen.com
             </h2>
             <p className="mx-auto max-w-3xl text-xl text-gray-600">
               Ervaar het verschil met massagestoelen die gemaakt zijn met passie
@@ -227,7 +227,7 @@ export default function OverOnsView() {
                   <div className="absolute inset-0 rotate-3 transform rounded-xl bg-blue-900"></div>
                   <div className="relative overflow-hidden rounded-xl bg-white p-8 shadow-xl">
                     <blockquote className="text-gray-700 italic">
-                      "Bij Relax-time transformeren we uw woonkamer in een
+                      "Bij Massagestoel-kopen.com transformeren we uw woonkamer in een
                       persoonlijke wellness ruimte. Elke massagestoel is met
                       zorg geselecteerd om u de best mogelijke ervaring te
                       bieden, zodat u kunt genieten van de voordelen van een
@@ -241,7 +241,7 @@ export default function OverOnsView() {
                         <div className="font-medium text-blue-900">
                           Directie
                         </div>
-                        <div className="text-sm text-gray-500">Relax-time</div>
+                        <div className="text-sm text-gray-500">Massagestoel-kopen.com</div>
                       </div>
                     </div>
                   </div>
@@ -297,9 +297,9 @@ export default function OverOnsView() {
 
                 <div className="grid gap-8 md:grid-cols-3">
                   <TeamMember
-                    name="Team Relax-time"
+                    name="Team Massagestoel-kopen.com"
                     role="Klaar om u te helpen"
-                    description="Maak kennis met het team van Relax-time - ervaren professionals die gepassioneerd zijn over massagestoelen en klantservice."
+                    description="Maak kennis met het team van Massagestoel-kopen.com - ervaren professionals die gepassioneerd zijn over massagestoelen en klantservice."
                   />
                   <TeamMember
                     name="Persoonlijk Advies"
@@ -335,10 +335,10 @@ export default function OverOnsView() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-16 text-center">
             <h2 className="mb-6 text-3xl font-bold">
-              Waarom Kiezen voor Relax-time?
+              Waarom Kiezen voor Massagestoel-kopen.com?
             </h2>
             <p className="mx-auto max-w-3xl text-xl text-blue-100">
-              Een massagestoel van Relax-time is meer dan een aankoop, het is
+              Een massagestoel van Massagestoel-kopen.com is meer dan een aankoop, het is
               een investering in uw welzijn
             </p>
           </div>
@@ -403,7 +403,7 @@ export default function OverOnsView() {
               <div className="relative h-64 md:h-auto">
                 <Image
                   src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80"
-                  alt="Relax-time showroom"
+                  alt="Massagestoel-kopen.com showroom"
                   fill
                   className="object-cover"
                 />

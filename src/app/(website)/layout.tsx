@@ -16,7 +16,7 @@ const fontSans = FontSans({
 });
 
 export const metadata: Metadata = {
-  title: "Relax-Time | Premium Massagestoelen",
+  title: "Massagestoel kopen | Premium Massagestoelen",
   description: "De beste massagestoelen voor thuis en op kantoor",
 };
 

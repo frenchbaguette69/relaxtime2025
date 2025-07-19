@@ -15,7 +15,7 @@ import { Toaster } from "sonner";
 const dmSans = DM_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Admin | Relax-Time",
+  title: "Admin | Massagestoel-kopen.com",
   description: "De beste massagestoelen voor thuis en op kantoor",
 };
 

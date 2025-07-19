@@ -3,15 +3,15 @@ import type { Metadata } from "next";
 import ContactView from "@/components/contact/ContactView";
 
 export const metadata: Metadata = {
-  title: "Contact | Relax-time - Premium Massagestoelen",
+  title: "Contact | Massagestoel-kopen.com - Premium Massagestoelen",
   description:
-    "Vragen over onze massagestoelen? Neem direct contact op met Relax-time voor persoonlijk advies en snelle service.",
+    "Vragen over onze massagestoelen? Neem direct contact op met Massagestoel kopen voor persoonlijk advies en snelle service.",
   openGraph: {
-    title: "Contact | Relax-time - Premium Massagestoelen",
+    title: "Contact | Massagestoel-kopen.com - Premium Massagestoelen",
     description:
-      "Vragen over onze massagestoelen? Neem direct contact op met Relax-time voor persoonlijk advies en snelle service.",
+      "Vragen over onze massagestoelen? Neem direct contact op met Massagestoel kopen voor persoonlijk advies en snelle service.",
     type: "website",
-    url: "https://relax-time.nl/contact",
+    url: "https://Massagestoel-kopen.com/contact",
   },
 };
 
